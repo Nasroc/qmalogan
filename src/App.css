@@ -7,9 +7,12 @@
 
 html,
 body {
-  background-image: linear-gradient(180deg, #4c4c5a 0%, #0f0f18 75%);
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+}
+
+.App {
+  background-image: linear-gradient(180deg, #4c4c5a 0%, #0f0f18 75%);
 }
