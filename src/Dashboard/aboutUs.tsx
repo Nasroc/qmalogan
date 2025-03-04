@@ -10,7 +10,7 @@ export function AboutUs() {
     <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
       <img
         alt=""
-        src="./src/assets/images/DojoBG.JPG"
+        src="./DojoBG.JPG"
         className="absolute inset-0 -z-10 size-full object-cover object-right md:object-center brightness-40 blur-xs"
       />
       <div
