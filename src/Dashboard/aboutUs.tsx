@@ -1,5 +1,4 @@
 import dojoBG from './DojoBG.JPG';
-import logo from './qma-logo.png';
 
 const stats = [
   { name: 'Current Students', value: '200+' },

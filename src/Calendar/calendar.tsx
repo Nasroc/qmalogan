@@ -12,7 +12,7 @@ interface CalendarProps {
 
 const Calendar: React.FC<CalendarProps> = ({ events = [] }) => {
     // State to keep track of the current date being displayed
-    const [currentDate, setCurrentDate] = useState(new Date());
+    const [currentDate] = useState(new Date());
     // State to keep track of the selected date
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
