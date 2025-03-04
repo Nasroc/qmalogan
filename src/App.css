@@ -13,6 +13,10 @@ body {
   }
 }
 
-.App {
-  background-image: linear-gradient(180deg, #4c4c5a 0%, #0f0f18 75%);
+.bg-grad-dark {
+  background: linear-gradient(180deg, #343438 0%, #1c1c27 100%);
+}
+
+.bg-grad-light {
+  background: linear-gradient(180deg, #c9c9d3 0%, #74748b 100%);
 }

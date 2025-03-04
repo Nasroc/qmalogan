@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import NavBar from './navbar/nav'
 import { Dashboard } from './Dashboard/dashboard'
+import Calendar from './Calendar/calendar'
 import './App.css'
 
 interface NavigationItem {
@@ -27,7 +28,7 @@ function chooseApp(navigation: NavigationItem[]) {
     case 'Projects':
       return <div>Projects Component</div>;
     case 'Calendar':
-      return <div>Calendar Component</div>;
+      return <Calendar />;
     default:
       return <div>Select an option from the navigation bar</div>;
   }

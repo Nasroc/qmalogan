@@ -1,4 +1,5 @@
 import dojoBG from './DojoBG.JPG';
+import logo from './qma-logo.png';
 
 const stats = [
   { name: 'Current Students', value: '200+' },
@@ -40,7 +41,7 @@ export function AboutUs() {
         />
       </div>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:mx-0">
+        <div className="mx-auto max-w-2xl lg:mx-0 relative">
           <h2 className="text-5xl font-semibold tracking-tight text-white sm:text-7xl">Join Us Today</h2>
           <p className="mt-8 text-lg font-medium text-pretty text-gray-300 sm:text-xl/8">
             Here at Quantum, we strive to create a culture that values respect, integrity, and curiosity. We believe that
@@ -48,6 +49,7 @@ export function AboutUs() {
             can thrive.
           </p>
         </div>
+        
         <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
           <dl className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
             {stats.map((stat) => (
