@@ -13,7 +13,7 @@ export function AboutUs() {
       <img
         src={dojoBG} 
         alt="Dojo Background"
-        className="absolute inset-0 -z-10 size-full object-cover object-right md:object-center brightness-40 blur-xs"
+        className="absolute inset-0 -z-10 size-full object-cover object-center md:object-center brightness-40 blur-xs"
       />
       <div
         aria-hidden="true"
