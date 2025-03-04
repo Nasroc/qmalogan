@@ -40,7 +40,7 @@ const Calendar: React.FC<CalendarProps> = ({ events = [] }) => {
     const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
     return (
-        <div className="w-screen h-screen min-h-screen flex flex-col items-center p-4 bg-linear-to-b from-[#ffffff] to-[#74748b]">
+        <div className="w-full h-full flex flex-col items-center p-4 bg-linear-to-b from-[#ffffff] to-[#74748b]">
             {/* Display the current month and year */}
             <h2 className="text-2xl font-bold mb-4 text-gray-900">{format(currentDate, "MMMM yyyy")}</h2>
             <div className="grid grid-cols-7 gap-1 w-full mb-4 max-w-500">
