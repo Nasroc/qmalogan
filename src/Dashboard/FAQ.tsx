@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export function FAQ() {
     const [current, setCurrent] = useState<number | null>(null);

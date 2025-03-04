@@ -10,10 +10,10 @@ interface NavigationItem {
 }
 
 const initialNavigation: NavigationItem[] = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
+  { name: 'Dashboard', href: 'Dashboard', current: true },
+  { name: 'Team', href: 'Team', current: false },
+  { name: 'Projects', href: 'Projects', current: false },
+  { name: 'Calendar', href: 'Calender', current: false },
 ];
 
 function chooseApp(navigation: NavigationItem[]) {
