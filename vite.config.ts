@@ -7,6 +7,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 export default defineConfig({
   plugins: [tailwindcss(), react(), tsconfigPaths()],
   //base: "/qmavite/",
+  assetsInclude: ["./src/assets/", '**/*.JPG', '**/*.jpg', '**/*.png', '**/*.svg', '**/*.gif', '**/*.jpeg'],
   css: {
     postcss: '/postcss.config.js',
   },

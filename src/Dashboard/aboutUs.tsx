@@ -1,4 +1,4 @@
-import dojoBG from './DojoBG.jpg';
+import dojoBG from './DojoBG.JPG';
 
 const stats = [
   { name: 'Current Students', value: '200+' },
