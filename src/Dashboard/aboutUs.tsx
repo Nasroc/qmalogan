@@ -9,7 +9,7 @@ const stats = [
 
 export function AboutUs() {
   return (
-    <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+    <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32 h-[calc(50vh-4rem)] min-h-[50rem]">
       <img
         src={dojoBG} 
         alt="Dojo Background"
