@@ -1,3 +1,5 @@
+import dojoBG from './DojoBG.jpg';
+
 const stats = [
   { name: 'Current Students', value: '200+' },
   { name: 'Coaches', value: '3' },
@@ -9,8 +11,8 @@ export function AboutUs() {
   return (
     <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
       <img
-        alt=""
-        src="./DojoBG.JPG"
+        src={dojoBG} 
+        alt="Dojo Background"
         className="absolute inset-0 -z-10 size-full object-cover object-right md:object-center brightness-40 blur-xs"
       />
       <div
