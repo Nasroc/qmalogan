@@ -39,9 +39,9 @@ function App() {
     const savedNavigation = localStorage.getItem('navigation');
     if (savedNavigation) {
       const parsedNavigation = JSON.parse(savedNavigation);
-      return parsedNavigation.map((item: NavigationItem, index: number) => ({
-        ...item,
-        name: initialNavigation[index]?.name || item.name,
+      return initialNavigation.map((item, index) => ({
+        ...parsedNavigation[index],
+        name: item.name,
       }));
     }
     return initialNavigation;
@@ -50,13 +50,20 @@ function App() {
   useEffect(() => {
     localStorage.setItem('navigation', JSON.stringify(navigation));
   }, [navigation]);
+  
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   return (
     <div className="App">
-      <NavBar navigation={navigation} setNavigation={setNavigation} />
+      <NavBar
+        navigation={navigation}
+        setNavigation={setNavigation}
+        isSignedIn={isSignedIn}
+        onSignInSuccess={() => setIsSignedIn(true)}
+        onSignOut={() => setIsSignedIn(false)} // Add this line
+      />
       {chooseApp(navigation)}
     </div>
-    
   );
 }
 

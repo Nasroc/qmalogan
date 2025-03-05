@@ -1,5 +1,5 @@
-import { AboutUs } from "../Dashboard/aboutUs";
-import { FAQ } from "../Dashboard/FAQ";
+import { AboutUs } from "./aboutUs";
+import { FAQ } from "./FAQ";
 
 export function Dashboard() {
   return (
