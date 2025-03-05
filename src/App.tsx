@@ -11,10 +11,10 @@ interface NavigationItem {
 }
 
 const initialNavigation: NavigationItem[] = [
-  { name: 'Dashboard', href: '#dashboard', current: true },
-  { name: 'Team', href: '#team', current: false },
-  { name: 'Projects', href: '#projects', current: false },
-  { name: 'Calendar', href: '#calendar', current: false },
+  { name: 'Dashboard', href: 'www.qmalogan.com', current: true },
+  { name: 'Team', href: 'www.qmalogan.com', current: false },
+  { name: 'Projects', href: 'www.qmalogan.com', current: false },
+  { name: 'Calendar', href: 'www.qmalogan.com', current: false },
 ];
 
 function chooseApp(navigation: NavigationItem[]) {
