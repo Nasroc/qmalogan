@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import NavBar from './navbar/nav'
 import { Dashboard } from './Dashboard/dashboard'
-import Calendar from './Calendar/calendar'
+import { Events_Schedule } from './Calendar/events_schedule'
 import './App.css'
 
 interface NavigationItem {
@@ -11,10 +11,10 @@ interface NavigationItem {
 }
 
 const initialNavigation: NavigationItem[] = [
-  { name: 'Dashboard', href: 'www.qmalogan.com', current: true },
-  { name: 'Team', href: 'www.qmalogan.com', current: false },
-  { name: 'Projects', href: 'www.qmalogan.com', current: false },
-  { name: 'Calendar', href: 'www.qmalogan.com', current: false },
+  { name: 'Dashboard', href: '#', current: true },
+  { name: 'Team', href: '#', current: false },
+  { name: 'Resources', href: '#', current: false },
+  { name: 'Events & Schedule', href: '#', current: false },
 ];
 
 function chooseApp(navigation: NavigationItem[]) {
@@ -25,10 +25,10 @@ function chooseApp(navigation: NavigationItem[]) {
       return <Dashboard />;
     case 'Team':
       return <div>Team Component</div>;
-    case 'Projects':
-      return <div>Projects Component</div>;
-    case 'Calendar':
-      return <Calendar />;
+    case 'Resources':
+      return <div>Resources Component</div>;
+    case 'Events & Schedule':
+      return <Events_Schedule />;
     default:
       return <div>Select an option from the navigation bar</div>;
   }
@@ -37,7 +37,14 @@ function chooseApp(navigation: NavigationItem[]) {
 function App() {
   const [navigation, setNavigation] = useState<NavigationItem[]>(() => {
     const savedNavigation = localStorage.getItem('navigation');
-    return savedNavigation ? JSON.parse(savedNavigation) : initialNavigation;
+    if (savedNavigation) {
+      const parsedNavigation = JSON.parse(savedNavigation);
+      return parsedNavigation.map((item: NavigationItem, index: number) => ({
+        ...item,
+        name: initialNavigation[index]?.name || item.name,
+      }));
+    }
+    return initialNavigation;
   });
 
   useEffect(() => {
@@ -49,6 +56,7 @@ function App() {
       <NavBar navigation={navigation} setNavigation={setNavigation} />
       {chooseApp(navigation)}
     </div>
+    
   );
 }
 

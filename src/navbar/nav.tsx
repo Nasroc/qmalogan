@@ -14,6 +14,7 @@ function classNames(...classes: string[]) {
 
 const NavBar: React.FC<NavBarProps> = ({ navigation, setNavigation }) => {
   const handleNavClick = (name: string) => {
+    console.log(`Navigating to ${name}`);
     setNavigation((prevNavigation) =>
       prevNavigation.map((navItem) =>
         navItem.name === name
