@@ -51,7 +51,6 @@ const NavBar: React.FC<NavBarProps> = ({ navigation, setNavigation }) => {
                 {navigation.map((item) => (
                   <a
                     key={item.name}
-                    href="#"
                     className={classNames(
                       item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                       'px-3 py-2 rounded-md text-sm font-medium'
@@ -84,7 +83,6 @@ const NavBar: React.FC<NavBarProps> = ({ navigation, setNavigation }) => {
             <Disclosure.Button
               key={item.name}
               as="a"
-              href={item.href}
               aria-current={item.current ? 'page' : undefined}
               className={classNames(
                 item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
