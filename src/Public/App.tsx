@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import NavBar from './navbar/nav'
 import { Dashboard } from './Dashboard/dashboard'
 import { Events_Schedule } from './Calendar/events_schedule'
 import { Resources } from './Resources/Resources'
-import SignInModal from './SignIn'
 import './App.css'
 
 function App() {

@@ -11,10 +11,6 @@ interface NavBarProps {
   onSignOut: () => void;
 }
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
-
 const NavBar: React.FC<NavBarProps> = ({ isSignedIn, onSignInSuccess, onSignOut }) => {
   const [showSignInModal, setShowSignInModal] = React.useState(false);
 
