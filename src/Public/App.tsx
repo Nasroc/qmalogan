@@ -1,10 +1,7 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
-import NavBar from './navbar/nav'
-import { Dashboard } from './Dashboard/dashboard'
-import { Events_Schedule } from './Calendar/events_schedule'
-import { Resources } from './Resources/Resources'
-import './App.css'
+import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { NavBar, Dashboard, Events_Schedule, Resources, Forms, Tenets, Pledge, Judo } from './index';
+import './App.css';
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -23,10 +20,14 @@ function App() {
           <Route path="/team" element={<div>Team Component</div>} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/events-schedule" element={<Events_Schedule />} />
+          <Route path="/resources/forms" element={<Forms />} />
+          <Route path="/resources/tenets" element={<Tenets />} />
+          <Route path="/resources/pledge" element={<Pledge />} />
+          <Route path="/resources/judo" element={<Judo />} />
         </Routes>
       </div>
     </Router>
   );
 }
 
-export default App
+export default App;

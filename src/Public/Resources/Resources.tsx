@@ -2,9 +2,18 @@ import { Link } from 'react-router-dom';
 
 export function Resources() {
     return (
-        <div className="dark:from-[#343438] dark:to-[#1c1c27] dark:text-white bg-linear-to-b from-[#ffffff] to-[#74748b]">
-            <Link to="/resources/forms">
-                <h1>Form</h1>
+        <div>
+            <Link to="/resources/forms" className="text-blue-500 hover:underline">
+                <h1>Forms</h1>
+            </Link>
+            <Link to="/resources/tenets" className="text-blue-500 hover:underline">
+                <h1>Tenets</h1>
+            </Link>
+            <Link to="/resources/pledge" className="text-blue-500 hover:underline">
+                <h1>Pledge</h1>
+            </Link>
+            <Link to="/resources/judo" className="text-blue-500 hover:underline">
+                <h1>Judo</h1>
             </Link>
         </div>
     );
