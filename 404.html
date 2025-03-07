@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0; url=/" />
+    <script type="text/javascript">
+      // Capture the current URL path
+      var redirectTo = window.location.pathname;
+      // Redirect to the captured URL path
+      window.location.replace('/#' + redirectTo);
+    </script>
   </head>
   <body>
   </body>
