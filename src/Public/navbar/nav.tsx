@@ -1,48 +1,25 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Disclosure, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon, BellIcon } from '@heroicons/react/24/outline';
 import logo from './qma-logo.png'; // Adjust the path to your logo
 import SignInModal from '../SignIn';
-import SignOutConfirmation from '../SignOutConfirmation'; // Add this line
 
 interface NavBarProps {
-  navigation: { name: string; href: string; current: boolean }[];
-  setNavigation: React.Dispatch<React.SetStateAction<{ name: string; href: string; current: boolean }[]>>;
   isSignedIn: boolean;
-  onSignInSuccess: () => void; // Add this line
-  onSignOut: () => void; // Add this line
+  onSignInSuccess: () => void;
+  onSignOut: () => void;
 }
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-const NavBar: React.FC<NavBarProps> = ({ navigation, setNavigation, isSignedIn, onSignInSuccess, onSignOut }) => {
+const NavBar: React.FC<NavBarProps> = ({ isSignedIn, onSignInSuccess, onSignOut }) => {
   const [showSignInModal, setShowSignInModal] = React.useState(false);
-  const [showSignOutConfirmation, setShowSignOutConfirmation] = React.useState(false); // Add this line
-
-  const handleNavClick = (name: string) => {
-    console.log(`Navigating to ${name}`);
-    setNavigation((prevNavigation) =>
-      prevNavigation.map((navItem) =>
-        navItem.name === name
-          ? { ...navItem, current: true }
-          : { ...navItem, current: false }
-      )
-    );
-  };
 
   const handleSignInClick = () => {
     setShowSignInModal(true);
-  };
-
-  const handleSignOutClick = () => {
-    setShowSignOutConfirmation(true);
-  };
-
-  const handleSignOutConfirm = () => {
-    onSignOut();
-    setShowSignOutConfirmation(false);
   };
 
   const QuestionMarkIcon = () => (
@@ -74,19 +51,18 @@ const NavBar: React.FC<NavBarProps> = ({ navigation, setNavigation, isSignedIn, 
             </div>
             <div className="hidden sm:ml-6 sm:block content-center">
               <div className="flex space-x-4">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    className={classNames(
-                      item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'px-3 py-2 rounded-md text-sm font-medium'
-                    )}
-                    aria-current={item.current ? 'page' : undefined}
-                    onClick={() => handleNavClick(item.name)}
-                  >
-                    {item.name}
-                  </a>
-                ))}
+                <Link to="/dashboard" className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                  Dashboard
+                </Link>
+                <Link to="/team" className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                  Team
+                </Link>
+                <Link to="/resources" className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                  Resources
+                </Link>
+                <Link to="/events-schedule" className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                  Events & Schedule
+                </Link>
               </div>
             </div>
           </div>
@@ -121,37 +97,29 @@ const NavBar: React.FC<NavBarProps> = ({ navigation, setNavigation, isSignedIn, 
                 className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
               >
                 <MenuItem>
-                  <a
-                    href="#"
+                    <a
+                    href="../src/User/user.html"
                     className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
-                  >
-                    Your Profile
-                  </a>
-                </MenuItem>
-                <MenuItem>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
-                  >
+                    >
                     Settings
-                  </a>
+                    </a>
                 </MenuItem>
                 <MenuItem>
+                    <div className='block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden'>
                     {isSignedIn ? (
-                      <button
-                        onClick={handleSignOutClick}
-                        className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
-                      >
-                        Sign out
-                      </button>
-                    ) : (
-                      <button
-                        onClick={handleSignInClick}
-                        className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
-                      >
-                        Sign in
-                      </button>
-                    )}
+                        <button
+                          onClick={onSignOut}
+                        >
+                          Sign out
+                        </button>
+                      ) : (
+                        <button
+                          onClick={handleSignInClick}
+                        >
+                          Sign in
+                        </button>
+                      )} 
+                    </div>
                 </MenuItem>
               </MenuItems>
             </Menu>
@@ -162,29 +130,22 @@ const NavBar: React.FC<NavBarProps> = ({ navigation, setNavigation, isSignedIn, 
 
       <Disclosure.Panel className="sm:hidden">
         <div className="space-y-1 px-2 pt-2 pb-3">
-          {navigation.map((item) => (
-            <Disclosure.Button
-              key={item.name}
-              as="a"
-              aria-current={item.current ? 'page' : undefined}
-              className={classNames(
-                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                'block rounded-md px-3 py-2 text-base font-medium',
-              )}
-              onClick={() => handleNavClick(item.name)}
-            >
-              {item.name}
-            </Disclosure.Button>
-          ))}
+          <Link to="/dashboard" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+            Dashboard
+          </Link>
+          <Link to="/team" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+            Team
+          </Link>
+          <Link to="/resources" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+            Resources
+          </Link>
+          <Link to="/events-schedule" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+            Events & Schedule
+          </Link>
         </div>
       </Disclosure.Panel>
 
       <SignInModal show={showSignInModal} onClose={() => setShowSignInModal(false)} onSignInSuccess={onSignInSuccess} />
-      <SignOutConfirmation
-        show={showSignOutConfirmation}
-        onClose={() => setShowSignOutConfirmation(false)}
-        onConfirm={handleSignOutConfirm}
-      />
     </Disclosure>
   );
 };
