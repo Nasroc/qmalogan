@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 @theme { 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
@@ -15,4 +19,14 @@ body {
 
 .App {
   @apply h-screen;
+}
+
+
+@layer utilities {
+  .custom-bg {
+    @apply bg-gradient-to-b from-[#ffffff] to-[#74748b];
+  }
+  .custom-dark {
+    @apply dark:from-[#343438] dark:to-[#1c1c27] dark:text-white;
+  }
 }

@@ -5,7 +5,7 @@ import App from './Public/App.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <div className="min-h-screen dark:bg-linear-to-b dark:from-[#343438] dark:to-[#1c1c27] dark:text-white bg-linear-to-b from-[#ffffff] to-[#74748b]">
+    <div className="min-h-screen custom-bg custom-dark">
       <App />
     </div>
   </StrictMode>,

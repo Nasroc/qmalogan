@@ -74,7 +74,7 @@ const Calendar: React.FC<CalendarProps> = ({ events = [] }) => {
                 <div
                     key={index}
                     onClick={() => handleDateClick(day)}
-                    className={`p-4 border border-gray-200 flex flex-col items-center justify-start cursor-pointer transition-colors duration-200 min-h-[100px] ${
+                    className={`lg:p-4 sm:p-1 border border-gray-200 flex flex-col items-center justify-start cursor-pointer transition-colors duration-200 ${
                     isToday ? "bg-blue-100 text-black font-bold" : "bg-white text-gray-900 font-light"
                     } ${isSelected ? "outline outline-2 outline-blue-800" : ""}`}
                     style={{ opacity: isCurrentMonth ? 1 : 0.5 }}
