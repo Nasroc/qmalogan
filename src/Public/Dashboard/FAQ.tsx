@@ -7,42 +7,65 @@ export function FAQ() {
         setCurrent(current === index ? null : index);
     };
 
+    const faqs = [
+        { question: "How can I pay for my appointment?", answer: "You can pay using credit card, debit card, or PayPal." },
+        { question: "What can I expect at my first consultation?", answer: "You will meet with our expert to discuss your goals and design a personalized plan." },
+        { question: "What are your opening hours?", answer: "We are open from 9:00 AM to 6:00 PM, Monday through Saturday." },
+        { question: "Do I need a referral?", answer: "No referral is needed. You can book directly through our website." },
+        { question: "Is the cost of the appointment covered by private health insurance?", answer: "Some insurance plans may cover part or all of the cost. Please check with your provider." }
+    ];
+
     return (
-        <section className="bg-gray-900 justify-center object-center items-center mt-12 mx-[10%] py-12 px-10 rounded-lg shadow-lg">
-            <div className="container px-6 py-10 mx-auto">
-                <h1 className="text-2xl font-semibold lg:text-3xl text-white">FAQ's</h1>
+        <section className="bg-gray-800 py-16 px-8 rounded-lg shadow-lg mt-12 mx-auto max-w-6xl">
+            <div className="container mx-auto">
+                {/* Header */}
+                <h2 className="text-4xl font-bold tracking-tight text-white text-center mb-10">
+                    Frequently Asked Questions
+                </h2>
 
-                <hr className="my-6 border-gray-700" />
-
-                {[
-                    { question: "How can I pay for my appointment ?", answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum officiis reprehenderit ex quia ducimus minima id provident molestias optio nam vel, quidem iure voluptatem, repellat et ipsa." },
-                    { question: "What can I expect at my first consultation ?", answer: "Lorem ipsum dolor sit amet consectetur  Magni, eum quae. Harum officiis reprehenderit ex quia ducimus minima id provident molestias optio nam vel, quidem iure voluptatem, repellat et ipsa." },
-                    { question: "What are your opening hours ?", answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eum quae. reprehenderit ex quia ducimus minima id provident molestias optio nam vel, quidem iure voluptatem, repellat et ipsa." },
-                    { question: "Do I need a referral ?", answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eum quae. Harum officiis reprehenderit inima id provident molestias optio nam vel, quidem iure voluptatem, repellat et ipsa." },
-                    { question: "Is the cost of the appointment covered by private health insurance ?", answer: "dolor sit amet consectetur adipisicing elit. Magni, eum quae. Harum officiis reprehenderit ex quia ducimus minima id provident molestias optio nam vel, quidem iure voluptatem, repellat et ipsa." }
-                ].map((item, index) => (
-                    <div key={index}>
-                        <button 
-                            className="flex items-center focus:outline-none hover:bg-gray-800 p-1 rounded-lg w-full"
-                            onClick={() => handleClick(index)}
+                {/* FAQ Items */}
+                <div className="space-y-6">
+                    {faqs.map((item, index) => (
+                        <div 
+                            key={index} 
+                            className={`border border-gray-700 rounded-lg overflow-hidden transition-all duration-300 ${
+                                current === index ? 'bg-gray-700 shadow-md' : ''
+                            }`}
                         >
-                            <svg className="flex-shrink-0 w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={current === index ? "M12 4v16m8-8H4" : "M20 12H4"}></path>
-                            </svg>
-                            <h1 className="mx-4 text-xl text-white">{item.question}</h1>
-                        </button>
+                            {/* Button */}
+                            <button 
+                                className="w-full flex items-center justify-between text-left py-5 px-6 hover:bg-gray-700 transition duration-300"
+                                onClick={() => handleClick(index)}
+                            >
+                                <h3 className="text-lg font-medium text-white">
+                                    {item.question}
+                                </h3>
+                                <svg
+                                    className={`w-6 h-6 text-blue-500 transform transition-transform duration-300 ${
+                                        current === index ? 'rotate-45' : 'rotate-0'
+                                    }`}
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={current === index ? "M12 4v16m8-8H4" : "M20 12H4"}></path>
+                                </svg>
+                            </button>
 
-                        <div className={`flex mt-8 md:mx-10 ${current === index ? '' : 'hidden'}`}>
-                            <span className="border border-blue-500"></span>
-
-                            <p className="max-w-3xl px-4 text-gray-300">
-                                {item.answer}
-                            </p>
+                            {/* Expandable Answer Section */}
+                            <div
+                                className={`transition-all duration-300 ${
+                                    current === index ? 'max-h-40 opacity-100 py-4 px-6' : 'max-h-0 opacity-0 py-0 px-6'
+                                }`}
+                            >
+                                <p className="text-gray-400 leading-relaxed">
+                                    {item.answer}
+                                </p>
+                            </div>
                         </div>
-
-                        <hr className="my-8 border-gray-700" />
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </section>
     );

@@ -25,27 +25,36 @@ const resources = [
 
 export function Resources() {
     return (
-        <section className="flex flex-col gap-10 items-center justify-start pt-20 h-full w-full custom-bg custom-dark">
-            <h1 className="text-5xl font-bold text-white mb-6 sr-only">Resources</h1>
-            {resources.map((resource) => (
-                <Link
-                    key={resource.name}
-                    to={`/resources/${resource.name}`}
-                    className="w-full sm:w-3/4 max-w-300 text-white"
-                >
-                    <div className="bg-gray-900 p-8 rounded-xl shadow-xl hover:shadow-2xl hover:bg-gray-800 hover:bg-gray-800 hover:scale-105 transition-transform duration-300 ease-in-out">
+        <section className="flex flex-col gap-8 items-center justify-start pt-20 h-full w-full">
+            {/* Header */}
+            <h2 className="text-4xl font-bold tracking-tight text-white mb-10">
+                Resources
+            </h2>
 
-                        <h2 className="text-5xl font-bold text-gray-100 text-center capitalize">
-                            {resource.name}
-                        </h2>
-                        <div className="text-xl text-gray-200 mt-4 text-center leading-relaxed">
-                            {resource.description.split('\n').map((line, index) => (
-                                <p key={index}>{line}</p>
-                            ))}
+            {/* Resource Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 w-full max-w-6xl">
+                {resources.map((resource) => (
+                    <Link
+                        key={resource.name}
+                        to={`/resources/${resource.name}`}
+                        className="w-full transition-transform duration-300 ease-in-out hover:scale-105"
+                    >
+                        <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl border border-gray-700 hover:border-blue-500 transition-colors h-[250px] flex flex-col items-center justify-center text-center">
+                            {/* Resource Name */}
+                            <h3 className="text-3xl font-semibold text-white capitalize mb-2">
+                                {resource.name}
+                            </h3>
+
+                            {/* Description */}
+                            <div className="text-lg text-gray-400 leading-relaxed overflow-hidden line-clamp-4">
+                                {resource.description.split('\n').map((line, index) => (
+                                    <p key={index}>{line}</p>
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                </Link>
-            ))}
+                    </Link>
+                ))}
+            </div>
         </section>
     );
 }
