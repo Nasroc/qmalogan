@@ -19,6 +19,9 @@ export function FormContent({ beltData, nextBelt, prevBelt, nextFormLink, prevFo
                 <h1 className="text-6xl font-extrabold text-gray-800 dark:text-white mb-4 leading-tight">
                     {beltData?.form}
                 </h1>
+                <h1 className="text-6xl font-extrabold text-gray-800 dark:text-white mb-4 leading-tight">
+                    {beltData?.korean}
+                </h1>
                 <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
                     Rank form for {beltData?.kup} ({beltData.name})
                 </p>

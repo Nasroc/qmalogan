@@ -18,6 +18,7 @@ export const belts = [
         image: white,
         form: 'Kibon',
         kup: '12th Kup',
+        korean: '기본(基本)',
     },
     { 
         id: 11,
@@ -25,19 +26,23 @@ export const belts = [
         image: yellowStripe,
         form: 'Kicho',
         kup: '11th Kup',
+        korean: '기초(基礎)',
     },
     { 
         id: 10,
         name: 'Yellow Belt',
         image: yellow,
         form: 'Kyuki Il Chang',
+        korean: '격기일장 (擊氣一章)',
         kup: '10th Kup',
+
     },
     { 
         id: 9,
         name: 'Green Stripe',
         image: greenStripe,
         form: 'Kyuki Yee Chang',
+        korean: '격기이장 (擊氣二章)',
         kup: '9th Kup',
     },
     { 
@@ -45,6 +50,7 @@ export const belts = [
         name: 'Green Belt',
         image: green,
         form: 'Kyuki Sam Chang',
+        korean: '격기삼장 (擊氣三章)',
         kup: '8th Kup',
     },
     { 
@@ -52,6 +58,7 @@ export const belts = [
         name: 'Blue Stripe',
         image: blueStripe,
         form: 'Guen Bon',
+        korean: '근본(根本)',
         kup: '7th Kup',
     },
     { 
@@ -59,6 +66,7 @@ export const belts = [
         name: 'Blue Belt',
         image: blue,
         form: 'Chon Ji In Il Chang',
+        korean: '천지인일장 (天地人一章)',
         kup: '6th Kup',
     },
     { 
@@ -66,6 +74,7 @@ export const belts = [
         name: 'Brown Stripe',
         image: brownStripe,
         form: 'Chon Ji In Yee Chang',
+        korean: '천지이장 (天地二章)',
         kup: '5th Kup',
     },
     { 
@@ -73,6 +82,7 @@ export const belts = [
         name: 'Brown Belt',
         image: brown,
         form: 'Chon Ji In Sam Chang',
+        korean: '천지삼장 (天地三章)',
         kup: '4th Kup',
     },
     { 
@@ -80,6 +90,7 @@ export const belts = [
         name: 'Red Stripe',
         image: redStripe,
         form: 'Man Nam',
+        korean: '만남(萬南)',
         kup: '3rd Kup',
     },
     { 
@@ -87,6 +98,7 @@ export const belts = [
         name: 'Red Belt',
         image: red,
         form: 'Ka Chi',
+        korean: '같이',
         kup: '2nd Kup',
     },
     { 
@@ -94,6 +106,7 @@ export const belts = [
         name: 'Black Stripe',
         image: blackStripe,
         form: 'Sa Rang',
+        korean: '사랑',
         kup: '1st Kup',
     },
 ];
