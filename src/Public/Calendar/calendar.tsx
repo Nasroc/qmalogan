@@ -187,6 +187,7 @@ const Calendar: React.FC<CalendarProps> = ({ isAdmin }) => {
               className="ml-2 p-3 bg-gray-800 text-white rounded border border-gray-600"
               value={newEventTime}
               onChange={(e) => setNewEventTime(e.target.value)}
+              placeholder="Event time"
             />
             <button
               onClick={handleAddEvent}
