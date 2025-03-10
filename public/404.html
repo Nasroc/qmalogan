@@ -4,8 +4,14 @@
     <script type="text/javascript">
       // Capture the current URL path
       var redirectTo = window.location.pathname;
-      // Redirect to the captured URL path
-      window.location.replace('/#' + redirectTo);
+      // Store the current URL path in local storage
+      localStorage.setItem('lastVisitedPage', redirectTo);
+      // Retrieve the last visited page from local storage
+      var lastVisitedPage = localStorage.getItem('lastVisitedPage');
+      // Redirect to the last visited page
+      if (lastVisitedPage) {
+        window.location.replace('/#' + lastVisitedPage);
+      }
     </script>
   </head>
   <body>
