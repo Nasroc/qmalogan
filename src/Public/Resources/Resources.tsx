@@ -39,7 +39,7 @@ export function Resources() {
                         to={`/resources/${resource.name}`}
                         className="w-full transition-transform duration-300 ease-in-out hover:scale-105"
                     >
-                        <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl border border-gray-700 hover:border-blue-500 transition-colors h-[250px] flex flex-col items-center justify-center text-center">
+                        <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl border border-gray-700 hover:border-yellow-500 transition-colors h-[250px] flex flex-col items-center justify-center text-center">
                             {/* Resource Name */}
                             <h3 className="text-3xl font-semibold text-white capitalize mb-2">
                                 {resource.name}

@@ -36,9 +36,9 @@ export function AboutUs() {
             {stats.map((stat) => (
               <div
                 key={stat.name}
-                className="flex flex-col items-start gap-2 p-6 bg-gray-800 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:bg-gray-700"
+                className="flex flex-col items-start gap-2 p-6"
               >
-                <dt className="text-base font-medium text-gray-400">
+                <dt className="text-base font-medium text-gray-300">
                   {stat.name}
                 </dt>
                 <dd className="text-4xl font-bold text-white">

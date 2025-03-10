@@ -11,10 +11,12 @@
     "postbuild": "echo 'www.qmalogan.com' > dist/CNAME"
   },
   "dependencies": {
+    "@firebase/firestore": "^4.7.9",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "autoprefixer": "^10.4.20",
     "date-fns": "^4.1.0",
+    "firebase": "^11.4.0",
     "lucide-react": "^0.479.0",
     "postcss": "^8.5.3",
     "react": "^19.0.0",
@@ -32,7 +34,7 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
-    "tailwindcss": "^4.0.9",
+    "tailwindcss": "^4.0.12",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0"

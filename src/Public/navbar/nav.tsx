@@ -4,22 +4,30 @@ import { Disclosure, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/r
 import { Bars3Icon, XMarkIcon, BellIcon } from '@heroicons/react/24/outline';
 import logo from './qma-logo.png'; // Adjust the path to your logo
 import SignInModal from '../SignIn';
+import SignOutConfirmation from '../SignOutConfirmation'; // Add this line
 
 interface NavBarProps {
   isSignedIn: boolean;
-  onSignInSuccess: () => void;
-  onSignOut: () => void;
+  onSignInSuccess: (role:string) => void; // Add this line
+  onSignOut: () => void; // Add this line
 }
 
-const NavBar: React.FC<NavBarProps> = ({ isSignedIn, onSignInSuccess, onSignOut }) => {
+const NavBar: React.FC<NavBarProps> = ({isSignedIn, onSignInSuccess, onSignOut }) => {
   const [showSignInModal, setShowSignInModal] = React.useState(false);
+  const [showSignOutConfirmation, setShowSignOutConfirmation] = React.useState(false); // Add this line
+
 
   const handleSignInClick = () => {
     setShowSignInModal(true);
   };
 
-  const handleSignInClose = () => {
-    setShowSignInModal(false);
+  const handleSignOutClick = () => {
+    setShowSignOutConfirmation(true);
+  };
+
+  const handleSignOutConfirm = () => {
+    onSignOut();
+    setShowSignOutConfirmation(false);
   };
 
   const QuestionMarkIcon = () => (
@@ -97,29 +105,29 @@ const NavBar: React.FC<NavBarProps> = ({ isSignedIn, onSignInSuccess, onSignOut 
                 className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
               >
                 <MenuItem>
-                    <a
-                    href="../src/User/user.html"
+                  <a
+                    href="#"
                     className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
-                    >
+                  >
                     Settings
-                    </a>
+                  </a>
                 </MenuItem>
                 <MenuItem>
-                    <div className='block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden'>
                     {isSignedIn ? (
-                        <button
-                          onClick={onSignOut}
-                        >
-                          Sign out
-                        </button>
-                      ) : (
-                        <button
-                          onClick={handleSignInClick}
-                        >
-                          Sign in
-                        </button>
-                      )} 
-                    </div>
+                      <button
+                        onClick={handleSignOutClick}
+                        className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden w-full text-left"
+                      >
+                        Sign out
+                      </button>
+                    ) : (
+                      <button
+                        onClick={handleSignInClick}
+                        className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden w-full text-left"
+                      >
+                        Sign in
+                      </button>
+                    )}
                 </MenuItem>
               </MenuItems>
             </Menu>
@@ -145,7 +153,12 @@ const NavBar: React.FC<NavBarProps> = ({ isSignedIn, onSignInSuccess, onSignOut 
         </div>
       </Disclosure.Panel>
 
-      <SignInModal show={showSignInModal} onClose={handleSignInClose} onSignInSuccess={onSignInSuccess} />
+      <SignInModal show={showSignInModal} onClose={() => setShowSignInModal(false)} onSignInSuccess={onSignInSuccess} />
+      <SignOutConfirmation
+        show={showSignOutConfirmation}
+        onClose={() => setShowSignOutConfirmation(false)}
+        onConfirm={handleSignOutConfirm}
+      />
     </Disclosure>
   );
 };
