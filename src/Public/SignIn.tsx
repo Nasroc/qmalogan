@@ -29,7 +29,7 @@ const SignInModal: React.FC<SignInModalProps> = ({ show, onClose, onSignInSucces
         // Determine the role based on the passcode
         const role = passcode === 'nemo' ? 'admin' : 'user';
         
-        const user = await signUpUser(email, password);
+        await signUpUser(email, password);
         onSignInSuccess(role); // Pass the role to the parent component
         onClose();
       } catch (error) {
@@ -38,7 +38,7 @@ const SignInModal: React.FC<SignInModalProps> = ({ show, onClose, onSignInSucces
     } else {
       // Sign-in logic
       try {
-        const user = await signInUser(email, password);
+        await signInUser(email, password);
         onSignInSuccess('user'); // Default to 'user' role, can be adjusted
         onClose();
       } catch (error) {

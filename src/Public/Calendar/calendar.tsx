@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, isSameDay, isSameMonth, subMonths, addMonths, parseISO } from "date-fns";
 import { ChevronLeft, ChevronRight, PlusCircle } from "lucide-react";
-import { db, collection, getDocs, addDoc, deleteDoc, doc, onSnapshot, updateDoc } from "../../api/firebase"; // Import Firebase functions
+import { db, collection, getDocs, addDoc, deleteDoc, doc, updateDoc } from "../../api/firebase"; // Import Firebase functions
 import { EventWithId, Event } from "../../api/firebase"; // Event types
 
 interface CalendarProps {
