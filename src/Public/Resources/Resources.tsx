@@ -25,7 +25,7 @@ const resources = [
 
 export function Resources() {
     return (
-        <section className="flex flex-col gap-8 items-center justify-start pt-20 h-full w-full">
+        <section className="flex flex-col items-center justify-start pt-12 h-full w-full custom-bg custom-dark">
             {/* Header */}
             <h2 className="text-4xl font-bold tracking-tight text-white mb-10">
                 Resources
@@ -36,7 +36,7 @@ export function Resources() {
                 {resources.map((resource) => (
                     <Link
                         key={resource.name}
-                        to={`/resources/${resource.name}`}
+                        to={`/resources/info/${resource.name}`}
                         className="w-full transition-transform duration-300 ease-in-out hover:scale-105"
                     >
                         <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl border border-gray-700 hover:border-yellow-500 transition-colors h-[250px] flex flex-col items-center justify-center text-center">
