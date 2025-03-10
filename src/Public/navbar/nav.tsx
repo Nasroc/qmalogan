@@ -37,12 +37,12 @@ const NavBar: React.FC<NavBarProps> = ({isSignedIn, onSignInSuccess, onSignOut }
   );
 
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-gray-100 dark:bg-gray-800 transition-colors duration-300 border-b border-gray-200 dark:border-gray-700">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-18 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* Mobile menu button */}
-            <Disclosure.Button className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset">
+            <Disclosure.Button className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 dark:focus:ring-white transition">
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open main menu</span>
               <Bars3Icon aria-hidden="true" className="block size-6 group-data-open:hidden" />
@@ -59,16 +59,16 @@ const NavBar: React.FC<NavBarProps> = ({isSignedIn, onSignInSuccess, onSignOut }
             </div>
             <div className="hidden sm:ml-6 sm:block content-center">
               <div className="flex space-x-4">
-                <Link to="/dashboard" className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                <Link to="/dashboard" className="px-3 py-2 rounded-md text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
                   Dashboard
                 </Link>
-                <Link to="/team" className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                <Link to="/team" className="px-3 py-2 rounded-md text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
                   Team
                 </Link>
-                <Link to="/resources" className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                <Link to="/resources" className="px-3 py-2 rounded-md text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
                   Resources
                 </Link>
-                <Link to="/events-schedule" className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                <Link to="/events-schedule" className="px-3 py-2 rounded-md text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
                   Events & Schedule
                 </Link>
               </div>
@@ -77,7 +77,7 @@ const NavBar: React.FC<NavBarProps> = ({isSignedIn, onSignInSuccess, onSignOut }
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <button
               type="button"
-              className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
+              className="relative p-1 rounded-full text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 dark:focus:ring-white transition"
             >
               <span className="absolute -inset-1.5" />
               <span className="sr-only">View notifications</span>
@@ -102,32 +102,36 @@ const NavBar: React.FC<NavBarProps> = ({isSignedIn, onSignInSuccess, onSignOut }
               </div>
               <MenuItems
                 transition
-                className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                className="absolute right-0 z-20 mt-2 w-48 rounded-md bg-white dark:bg-gray-800 shadow-lg ring-1 ring-black/5 dark:ring-white/10 focus:outline-none transition-transform origin-top-right scale-95 opacity-0 data-open:scale-100 data-open:opacity-100"
               >
                 <MenuItem>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
-                  >
-                    Settings
-                  </a>
+                  {({ active }) => (
+                    <Link
+                      to="/settings"
+                      className={`block px-4 py-2 text-sm ${
+                        active ? 'bg-gray-200 dark:bg-gray-700' : 'text-gray-700 dark:text-gray-300'
+                      }`}
+                    >
+                      Settings
+                    </Link>
+                  )}
                 </MenuItem>
                 <MenuItem>
-                    {isSignedIn ? (
-                      <button
-                        onClick={handleSignOutClick}
-                        className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden w-full text-left"
-                      >
-                        Sign out
-                      </button>
-                    ) : (
-                      <button
-                        onClick={handleSignInClick}
-                        className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden w-full text-left"
-                      >
-                        Sign in
-                      </button>
-                    )}
+                  {isSignedIn ? (
+                    <button
+                      onClick={handleSignOutClick}
+                      className="block px-4 py-2 text-sm text-left text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition w-full"
+                    >
+                      Sign Out
+                    </button>
+                  ) : (
+                    <button
+                      onClick={handleSignInClick}
+                      className="block px-4 py-2 text-sm text-left text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition w-full"
+                    >
+                      Sign In
+                    </button>
+                  )}
                 </MenuItem>
               </MenuItems>
             </Menu>
@@ -138,16 +142,16 @@ const NavBar: React.FC<NavBarProps> = ({isSignedIn, onSignInSuccess, onSignOut }
 
       <Disclosure.Panel className="sm:hidden">
         <div className="space-y-1 px-2 pt-2 pb-3">
-          <Link to="/dashboard" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+          <Link to="/dashboard" className="block px-3 py-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
             Dashboard
           </Link>
-          <Link to="/team" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+          <Link to="/team" className="block px-3 py-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
             Team
           </Link>
-          <Link to="/resources" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+          <Link to="/resources" className="block px-3 py-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
             Resources
           </Link>
-          <Link to="/events-schedule" className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+          <Link to="/events-schedule" className="block px-3 py-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
             Events & Schedule
           </Link>
         </div>

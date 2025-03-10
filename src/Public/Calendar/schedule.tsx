@@ -1,12 +1,16 @@
 export function Schedule() {
     return (
-        <section className="p-10 bg-gray-800 rounded-lg shadow-lg">
+        <section className="p-10 bg-white dark:bg-gray-900 rounded-lg shadow-lg transition-colors duration-300">
             <div className="container px-6 py-10 mx-auto">
-                <h1 className="text-4xl font-bold text-gray-100 text-center">Weekly Schedule</h1>
+                {/* Title */}
+                <h1 className="text-4xl font-bold text-gray-800 dark:text-white text-center transition-colors">
+                    Weekly Schedule
+                </h1>
 
-                <hr className="my-6 border-gray-700" />
+                <hr className="my-6 border-gray-300 dark:border-gray-700 transition-colors" />
 
-                <ul className="text-gray-300 space-y-10">
+                {/* List of Days and Events */}
+                <ul className="space-y-10">
                     {[
                         {
                             day: "Monday",
@@ -46,12 +50,17 @@ export function Schedule() {
                             ],
                         },
                     ].map(({ day, events }) => (
-                        <li key={day} className="flex flex-col gap-4 bg-gray-900 p-4 rounded-md shadow-md">
-                            <strong className="text-2xl text-gray-100 border-l-4 border-yellow-500 pl-4">
+                        <li
+                            key={day}
+                            className="flex flex-col gap-4 bg-gray-100 dark:bg-gray-800 p-4 rounded-md shadow-md transition-colors"
+                        >
+                            {/* Day Label */}
+                            <strong className="text-2xl text-gray-800 dark:text-white border-l-4 border-yellow-400 pl-4">
                                 {day}:
                             </strong>
+                            {/* List of Events */}
                             {events.map((event, index) => (
-                                <span key={index} className="ml-6 text-lg text-gray-300">
+                                <span key={index} className="ml-6 text-lg text-gray-700 dark:text-gray-300 transition-colors">
                                     {event}
                                 </span>
                             ))}
@@ -60,5 +69,6 @@ export function Schedule() {
                 </ul>
             </div>
         </section>
+
     );
 }
