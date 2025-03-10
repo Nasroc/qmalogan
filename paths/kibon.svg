@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="129.757" height="142.147" viewBox="0, 0, 129.757, 142.147">
+  <g id="With_Positions" transform="translate(-7.043, -0.927)">
+    <path d="M72.5,85.427 L72.5,118.645" fill-opacity="0" stroke="#000000" stroke-width="2"/>
+    <path d="M118.645,72.5 L85.427,72.5" fill-opacity="0" stroke="#000000" stroke-width="2"/>
+    <path d="M59.572,72.5 L26.355,72.5" fill-opacity="0" stroke="#000000" stroke-width="2"/>
+    <path d="M72.5,26.355 L72.5,59.572" fill-opacity="0" stroke="#000000" stroke-width="2"/>
+    <text transform="matrix(1, 0, 0, 1, 72, 72)">
+      <tspan x="-6.038" y="4.999" font-family="Georgia" font-size="18" fill="#000000">A</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 12.928, 72)">
+      <tspan x="-5.884" y="4.999" font-family="Georgia" font-size="18" fill="#000000">B</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 131.021, 72)">
+      <tspan x="-5.779" y="4.999" font-family="Georgia" font-size="18" fill="#000000">C</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 72, 12.928)">
+      <tspan x="-6.741" y="4.999" font-family="Georgia" font-size="18" fill="#000000">D</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 72, 131.072)">
+      <tspan x="-5.88" y="4.999" font-family="Georgia" font-size="18" fill="#000000">E</tspan>
+    </text>
+  </g>
+</svg>
