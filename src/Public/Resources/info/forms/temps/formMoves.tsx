@@ -6,7 +6,7 @@ interface FormDetailsProps {
 
 export function FormMoves  ({ readyPosition, pathImg, steps }: FormDetailsProps) {
   return (
-    <section className="flex flex-col items-center justify-start gap-12 py-20 px-8 bg-gray-100 dark:bg-gray-800 min-h-screen transition-colors duration-300">
+    <section className="flex flex-col items-center justify-start gap-12 py-20 px-8 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
 
       {/* Ready Position */}
       <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-xl border border-gray-300 dark:border-gray-700 shadow-lg w-full max-w-3xl transition-colors">
