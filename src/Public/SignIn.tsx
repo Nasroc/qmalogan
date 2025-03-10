@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { signInUser, signUpUser } from '../api/firebase'; // Import Firebase Auth methods
 import logo from './qma-logo.png';
+import { doc, getDoc, setDoc } from 'firebase/firestore'; // Firestore methods for fetching user role
+import { db } from '../api/firebase'; // Import Firestore instance
 
 interface SignInModalProps {
   show: boolean;
@@ -29,7 +31,16 @@ const SignInModal: React.FC<SignInModalProps> = ({ show, onClose, onSignInSucces
         // Determine the role based on the passcode
         const role = passcode === 'nemo' ? 'admin' : 'user';
         
-        await signUpUser(email, password);
+        // Sign up the user with Firebase Auth
+        const user = await signUpUser(email, password);
+
+        // Store the role in Firestore after user creation
+        const userRef = doc(db, "users", user.uid); // Create a document in Firestore for the user
+        await setDoc(userRef, {
+          email: email,
+          role: role, // Store the role in Firestore
+        });
+
         onSignInSuccess(role); // Pass the role to the parent component
         onClose();
       } catch (error) {
@@ -38,9 +49,20 @@ const SignInModal: React.FC<SignInModalProps> = ({ show, onClose, onSignInSucces
     } else {
       // Sign-in logic
       try {
-        await signInUser(email, password);
-        onSignInSuccess('user'); // Default to 'user' role, can be adjusted
-        onClose();
+        const user = await signInUser(email, password);
+
+        // After successful sign-in, fetch the role from Firestore
+        const userRef = doc(db, "users", user.uid);
+        const userDoc = await getDoc(userRef);
+
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          const role = userData?.role || 'user'; // Default to 'user' if no role is found
+          onSignInSuccess(role); // Pass the role to the parent component
+          onClose();
+        } else {
+          setError('No user data found.');
+        }
       } catch (error) {
         setError('Invalid email or password');
       }
