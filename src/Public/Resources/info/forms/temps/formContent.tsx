@@ -98,6 +98,7 @@ export function FormContent({ beltData, nextBelt, prevBelt, nextFormLink, prevFo
                     readyPosition={formDetails?.readyPosition || ''}
                     pathImg={formDetails?.pathImg || ''}
                     steps={formDetails?.steps || []}
+                    paro={formDetails?.paro || ''}
                 />
             </div>
 

@@ -18,9 +18,6 @@ export function FormFacts({ facts }: FormFactsProps) {
             {/* Moves Definition */}
             {facts.movesDef && (
                 <div className="py-4 border-b border-gray-300 dark:border-gray-700">
-                    <h3 className="text-lg font-medium text-gray-600 dark:text-gray-400">
-                        Moves Definition:
-                    </h3>
                     <p className="text-2xl font-semibold text-gray-700 dark:text-gray-300">
                         {facts.movesDef}
                     </p>
@@ -42,9 +39,6 @@ export function FormFacts({ facts }: FormFactsProps) {
             {/* Large Definition */}
             {facts.largeDef && (
                 <div className="py-4 border-b border-gray-300 dark:border-gray-700">
-                    <h3 className="text-lg font-medium text-gray-600 dark:text-gray-400">
-                        Large Definition:
-                    </h3>
                     <blockquote
                         className="text-2xl italic font-semibold text-gray-700 dark:text-gray-300 border-l-4 pl-4"
                         style={{ borderColor: '#FDE68A' }}
@@ -67,9 +61,6 @@ export function FormFacts({ facts }: FormFactsProps) {
             {/* Small Definition */}
             {facts.smallDef && (
                 <div className="py-4 border-b border-gray-300 dark:border-gray-700">
-                    <h3 className="text-lg font-medium text-gray-600 dark:text-gray-400">
-                        Small Definition:
-                    </h3>
                     <p className="text-2xl font-semibold text-gray-700 dark:text-gray-300">
                         {facts.smallDef}
                     </p>

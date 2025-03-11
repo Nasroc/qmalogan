@@ -25,7 +25,9 @@ const resources = [
 
 export function Resources() {
     return (
-        <section className="flex flex-col items-center justify-start pt-12 h-full w-full custom-bg custom-dark transition-colors duration-300">
+        <section className="flex flex-col items-center justify-start pt-12 w-full custom-bg custom-dark transition-colors duration-300" 
+        style= {{minHeight: 'calc(100vh - 5rem)'}}
+        >
     {/* Header */}
     <h2 className="text-4xl font-bold tracking-tight text-gray-800 dark:text-white mb-10 transition-colors">
         Resources

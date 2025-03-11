@@ -3,7 +3,9 @@ import belts from './belts';
 
 export function Forms() {
     return (
-        <section className="flex flex-col items-center justify-start gap-12 py-20 px-8 custom-bg custom-dark min-h-screen transition-colors duration-300">
+        <section className="flex flex-col items-center justify-start gap-12 py-20 px-8 custom-bg custom-dark transition-colors duration-300"
+        style= {{minHeight: 'calc(100vh - 5rem)'}}
+        >
             {/* Back to Resources Link */}
             <Link 
                 to="/resources" 

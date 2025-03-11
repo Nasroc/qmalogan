@@ -149,7 +149,7 @@ const Calendar: React.FC<CalendarProps> = ({ isAdmin }) => {
                 <div
                     key={index}
                     onClick={() => setSelectedDate(day)}
-                    className={`relative flex flex-col items-start p-2 border border-gray-300 dark:border-gray-700 rounded-lg cursor-pointer transition-all duration-200
+                    className={`relative flex flex-col items-start md:p-1 sm:p-0 border border-gray-300 dark:border-gray-700 rounded-lg cursor-pointer transition-all duration-200 overflow-hidden
                         ${isToday ? "bg-blue-400 dark:bg-blue-500 text-white font-bold" : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-300"}
                         ${isSelected ? "outline outline-4 outline-yellow-400" : ""}
                         ${!isCurrentMonth ? "opacity-50" : ""}`}
@@ -160,7 +160,7 @@ const Calendar: React.FC<CalendarProps> = ({ isAdmin }) => {
                     </span>
 
                     {/* Event Titles */}
-                    <div className="mt-2 text-sm text-yellow-500 w-full overflow-hidden">
+                    <div className="mt-2 md:text-sm text-[10px] text-yellow-500 w-full overflow-hidden">
                         {dayEvents.slice(0, 2).map((event, idx) => (
                             <p key={idx} className="truncate">
                                 {event.title} <br />

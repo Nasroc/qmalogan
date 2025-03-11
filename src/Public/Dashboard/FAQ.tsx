@@ -16,10 +16,10 @@ export function FAQ() {
     ];
 
     return (
-        <section className="bg-gray-800 py-16 px-8 rounded-lg shadow-lg mt-12 mx-auto max-w-6xl">
+        <section className="bg-gray-100 dark:bg-gray-900 py-16 px-8 rounded-xl shadow-lg mt-12 mx-auto max-w-6xl transition-colors duration-300">
             <div className="container mx-auto">
                 {/* Header */}
-                <h2 className="text-4xl font-bold tracking-tight text-white text-center mb-10">
+                <h2 className="text-4xl font-bold tracking-tight text-gray-800 dark:text-white text-center mb-10">
                     Frequently Asked Questions
                 </h2>
 
@@ -28,16 +28,16 @@ export function FAQ() {
                     {faqs.map((item, index) => (
                         <div 
                             key={index} 
-                            className={`border border-gray-700 rounded-lg overflow-hidden transition-all duration-300 ${
-                                current === index ? 'bg-gray-700 shadow-md' : ''
+                            className={`border border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden transition-all duration-300 ${
+                                current === index ? 'bg-gray-200 dark:bg-gray-800 shadow-md' : ''
                             }`}
                         >
                             {/* Button */}
                             <button 
-                                className="w-full flex items-center justify-between text-left py-5 px-6 hover:bg-gray-700 transition duration-300"
+                                className="w-full flex items-center justify-between text-left py-5 px-6 hover:bg-gray-200 dark:hover:bg-gray-800 transition duration-300"
                                 onClick={() => handleClick(index)}
                             >
-                                <h3 className="text-lg font-medium text-white">
+                                <h3 className="text-lg font-medium text-gray-800 dark:text-white">
                                     {item.question}
                                 </h3>
                                 <svg
@@ -59,7 +59,7 @@ export function FAQ() {
                                     current === index ? 'max-h-40 opacity-100 py-4 px-6' : 'max-h-0 opacity-0 py-0 px-6'
                                 }`}
                             >
-                                <p className="text-gray-400 leading-relaxed">
+                                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                                     {item.answer}
                                 </p>
                             </div>
