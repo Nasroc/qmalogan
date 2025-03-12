@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export function FAQ() {
     const [current, setCurrent] = useState<number | null>(null);
@@ -8,11 +9,11 @@ export function FAQ() {
     };
 
     const faqs = [
-        { question: "How can I pay for my appointment?", answer: "You can pay using credit card, debit card, or PayPal." },
-        { question: "What can I expect at my first consultation?", answer: "You will meet with our expert to discuss your goals and design a personalized plan." },
-        { question: "What are your opening hours?", answer: "We are open from 9:00 AM to 6:00 PM, Monday through Saturday." },
-        { question: "Do I need a referral?", answer: "No referral is needed. You can book directly through our website." },
-        { question: "Is the cost of the appointment covered by private health insurance?", answer: "Some insurance plans may cover part or all of the cost. Please check with your provider." }
+        { question: "How can I pay for class?", answer: "You can pay using credit card, debit card, cash, or Venmo." },
+        { question: "What can I expect from the first day of Class?", answer: "You will meet with one of the coaches and they will explain what we will be working of for the day. From there you will get to meet with other students, who will help you grow as you continue to come to class." },
+        { question: "What are your class hours?", answer: <>We have a few different class hours so if you would like to pop over to our <Link to="/events-schedule" className="text-yellow-500 dark:text-yellow-400 underline">Schedule Page</Link>.</> },
+        { question: "Do I need a referral?", answer: "No referral is needed. You can come in anytime to observe and decide if Kyuki-do is for you."},
+        { question: "Will I get injured?", answer: "Injuries can happen when pushing yourself in class, if you aren't following the proper techniques. Ask questions when needed and follow what the coaches and black belts teach you. This will help prevent possible injury." }
     ];
 
     return (
@@ -29,7 +30,7 @@ export function FAQ() {
                         <div 
                             key={index} 
                             className={`border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm transition-all duration-300 ${
-                                current === index ? 'bg-gray-100 dark:bg-gray-900 shadow-md' : ''
+                                current === index ? 'bg-gray-100 dark:bg-gray-900 shadow-md' : 'bg-gray-100 dark:bg-gray-900 shadow-md'
                             }`}
                         >
                             {/* Button */}
