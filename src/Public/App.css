@@ -7,6 +7,8 @@
 @theme { 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+    --color-blue-999: oklch(0.215 0.091 267.935);
 }
 
 html,

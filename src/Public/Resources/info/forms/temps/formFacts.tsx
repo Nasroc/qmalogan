@@ -4,30 +4,28 @@ interface FormFactsProps {
 
 export function FormFacts({ facts }: FormFactsProps) {
     return (
-        <div className="bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg p-8 w-full max-w-2xl mx-auto text-center transition-colors duration-300">
-            {/* Number of Movements */}
-            <div className="py-4 border-b border-gray-300 dark:border-gray-700">
-                <h3 className="text-lg font-medium text-gray-600 dark:text-gray-400">
-                    Number of Movements:
-                </h3>
-                <p className="text-3xl font-bold text-gray-800 dark:text-white">
-                    {facts.moves}
-                </p>
-            </div>
-
-            {/* Moves Definition */}
-            {facts.movesDef && (
-                <div className="py-4 border-b border-gray-300 dark:border-gray-700">
-                    <p className="text-2xl font-semibold text-gray-700 dark:text-gray-300">
-                        {facts.movesDef}
+        <div className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md p-6 w-full max-w-3xl mx-auto text-center transition-colors duration-300 space-y-4">
+            {/* Number of Movements + Moves Definition */}
+            {facts.moves && (
+                <div className="p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm bg-gray-100 dark:bg-gray-900 space-y-1">
+                    <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-400">
+                        Number of Movements:
+                    </h3>
+                    <p className="text-3xl font-bold text-gray-800 dark:text-white">
+                        {facts.moves}
                     </p>
+                    {facts.movesDef && (
+                        <p className="text-2xl font-semibold text-gray-700 dark:text-gray-300 leading-relaxed">
+                            {facts.movesDef}
+                        </p>
+                    )}
                 </div>
             )}
 
             {/* Ready Position */}
             {facts.ready && (
-                <div className="py-4 border-b border-gray-300 dark:border-gray-700">
-                    <h3 className="text-lg font-medium text-gray-600 dark:text-gray-400">
+                <div className="p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm bg-gray-100 dark:bg-gray-900 space-y-1">
+                    <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-400">
                         Ready Position:
                     </h3>
                     <p className="text-2xl font-bold text-gray-800 dark:text-white">
@@ -38,44 +36,45 @@ export function FormFacts({ facts }: FormFactsProps) {
 
             {/* Large Definition */}
             {facts.largeDef && (
-                <div className="py-4 border-b border-gray-300 dark:border-gray-700">
-                    <blockquote
-                        className="text-2xl italic font-semibold text-gray-700 dark:text-gray-300 border-l-4 pl-4"
-                        style={{ borderColor: '#FDE68A' }}
-                    >
+                <div className="p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm bg-gray-100 dark:bg-gray-900 space-y-1">
+                    <blockquote className="text-2xl italic font-semibold text-gray-700 dark:text-gray-400 border-l-4 pl-3 border-yellow-300 dark:border-yellow-500">
                         "{facts.largeDef}"
                     </blockquote>
                 </div>
             )}
 
             {/* Meaning */}
-            <div className="py-4 border-b border-gray-300 dark:border-gray-700">
-                <h3 className="text-lg font-medium text-gray-600 dark:text-gray-400">
-                    Meaning:
-                </h3>
-                <p className="text-2xl font-bold text-gray-800 dark:text-white">
-                    {facts.meaning}
-                </p>
-            </div>
+            {facts.meaning && (
+                <div className="p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm bg-gray-100 dark:bg-gray-900 space-y-1">
+                    <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-400">
+                        Meaning:
+                    </h3>
+                    <p className="text-2xl font-bold text-gray-800 dark:text-white">
+                        {facts.meaning}
+                    </p>
+                </div>
+            )}
 
             {/* Small Definition */}
             {facts.smallDef && (
-                <div className="py-4 border-b border-gray-300 dark:border-gray-700">
-                    <p className="text-2xl font-semibold text-gray-700 dark:text-gray-300">
+                <div className="p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm bg-gray-100 dark:bg-gray-900 space-y-1">
+                    <p className="text-lg text-gray-700 dark:text-gray-400 leading-relaxed">
                         {facts.smallDef}
                     </p>
                 </div>
             )}
 
             {/* Month */}
-            <div className="py-4">
-                <h3 className="text-lg font-medium text-gray-600 dark:text-gray-400">
-                    Month:
-                </h3>
-                <p className="text-2xl font-bold text-gray-800 dark:text-white">
-                    {facts.month}
-                </p>
-            </div>
+            {facts.month && (
+                <div className="p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm bg-gray-100 dark:bg-gray-900 space-y-1">
+                    <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-400">
+                        Month:
+                    </h3>
+                    <p className="text-2xl font-bold text-gray-800 dark:text-white">
+                        {facts.month}
+                    </p>
+                </div>
+            )}
         </div>
     );
 }

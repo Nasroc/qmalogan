@@ -16,7 +16,7 @@ export function FAQ() {
     ];
 
     return (
-        <section className="bg-gray-100 dark:bg-gray-900 py-16 px-8 rounded-xl shadow-lg mt-12 mx-auto max-w-6xl transition-colors duration-300">
+        <section className="bg-gray-50 dark:bg-gray-800 py-16 px-8 rounded-2xl shadow-lg mt-12 mx-4 sm:mx-8 xl:mx-auto max-w-7xl transition-colors duration-300">
             <div className="container mx-auto">
                 {/* Header */}
                 <h2 className="text-4xl font-bold tracking-tight text-gray-800 dark:text-white text-center mb-10">
@@ -28,20 +28,20 @@ export function FAQ() {
                     {faqs.map((item, index) => (
                         <div 
                             key={index} 
-                            className={`border border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden transition-all duration-300 ${
-                                current === index ? 'bg-gray-200 dark:bg-gray-800 shadow-md' : ''
+                            className={`border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm transition-all duration-300 ${
+                                current === index ? 'bg-gray-100 dark:bg-gray-900 shadow-md' : ''
                             }`}
                         >
                             {/* Button */}
                             <button 
-                                className="w-full flex items-center justify-between text-left py-5 px-6 hover:bg-gray-200 dark:hover:bg-gray-800 transition duration-300"
+                                className="w-full flex items-center justify-between text-left py-5 px-6 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition duration-300"
                                 onClick={() => handleClick(index)}
                             >
-                                <h3 className="text-lg font-medium text-gray-800 dark:text-white">
+                                <h3 className="text-lg font-medium text-gray-800 dark:text-gray-300">
                                     {item.question}
                                 </h3>
                                 <svg
-                                    className={`w-6 h-6 text-blue-500 transform transition-transform duration-300 ${
+                                    className={`w-6 h-6 text-yellow-500 transform transition-transform duration-300 ${
                                         current === index ? 'rotate-45' : 'rotate-0'
                                     }`}
                                     fill="none"
