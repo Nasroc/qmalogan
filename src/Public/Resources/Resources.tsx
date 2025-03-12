@@ -6,27 +6,27 @@ const resources = [
         description:
             'Go to the forms page so you can study and learn the different Forms of Kyuki-Do.',
     },
-    {
-        name: 'tenets',
-        description:
-            'There are SIX different Tenets of Kyuki-do.\nGo to the Tenets Page to learn the different tenets and how we can exhibit them.',
-    },
-    {
-        name: 'pledges',
-        description:
-            'Along with our Tenets, there are also FIVE pledges that students must make.\nGo to the Pledges page to learn the different pledges.',
-    },
-    {
-        name: 'judo',
-        description:
-            'Judo is a wonderful martial art that we like to participate in occasionally.\nIn class, we will talk about different judo throws, using their Japanese names.\nTo help with recognizing these throws and their names, go to the Judo page to learn them.',
-    },
+    // {
+    //     name: 'tenets',
+    //     description:
+    //         'There are SIX different Tenets of Kyuki-do.\nGo to the Tenets Page to learn the different tenets and how we can exhibit them.',
+    // },
+    // {
+    //     name: 'pledges',
+    //     description:
+    //         'Along with our Tenets, there are also FIVE pledges that students must make.\nGo to the Pledges page to learn the different pledges.',
+    // },
+    // {
+    //     name: 'judo',
+    //     description:
+    //         'Judo is a wonderful martial art that we like to participate in occasionally.\nIn class, we will talk about different judo throws, using their Japanese names.\nTo help with recognizing these throws and their names, go to the Judo page to learn them.',
+    // },
 ];
 
 export function Resources() {
     return (
         <section 
-            className="flex flex-col items-center justify-center py-16 w-full custom-bg custom-dark transition-colors duration-300" 
+            className="flex flex-col items-center justify-start py-16 w-full custom-bg custom-dark transition-colors duration-300" 
             style={{ minHeight: 'calc(100vh - 5rem)' }}
         >
             {/* Header */}

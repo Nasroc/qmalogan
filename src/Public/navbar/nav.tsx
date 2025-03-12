@@ -62,9 +62,9 @@ const NavBar: React.FC<NavBarProps> = ({isSignedIn, onSignInSuccess, onSignOut }
                 <Link to="/dashboard" className="px-3 py-2 rounded-md text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
                   Dashboard
                 </Link>
-                <Link to="/team" className="px-3 py-2 rounded-md text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                {/* <Link to="/team" className="px-3 py-2 rounded-md text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
                   Team
-                </Link>
+                </Link> */}
                 <Link to="/resources" className="px-3 py-2 rounded-md text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
                   Resources
                 </Link>
@@ -75,14 +75,14 @@ const NavBar: React.FC<NavBarProps> = ({isSignedIn, onSignInSuccess, onSignOut }
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <button
+            {/* <button
               type="button"
               className="relative p-1 rounded-full text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 dark:focus:ring-white transition"
             >
               <span className="absolute -inset-1.5" />
               <span className="sr-only">View notifications</span>
               <BellIcon aria-hidden="true" className="size-6" />
-            </button>
+            </button> */}
 
             <Menu as="div" className="relative ml-3">
               <div>
@@ -104,7 +104,7 @@ const NavBar: React.FC<NavBarProps> = ({isSignedIn, onSignInSuccess, onSignOut }
                 transition
                 className="absolute right-0 z-20 mt-2 w-48 rounded-md bg-white dark:bg-gray-800 shadow-lg ring-1 ring-black/5 dark:ring-white/10 focus:outline-none transition-transform origin-top-right scale-95 opacity-0 data-open:scale-100 data-open:opacity-100"
               >
-                <MenuItem>
+                {/* <MenuItem>
                   {({ active }) => (
                     <Link
                       to="/settings"
@@ -115,12 +115,12 @@ const NavBar: React.FC<NavBarProps> = ({isSignedIn, onSignInSuccess, onSignOut }
                       Settings
                     </Link>
                   )}
-                </MenuItem>
+                </MenuItem> */}
                 <MenuItem>
                   {isSignedIn ? (
                     <button
                       onClick={handleSignOutClick}
-                      className="block px-4 py-2 text-sm text-left text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition w-full"
+                      className="block px-4 py-2 text-sm text-left text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition w-full"
                     >
                       Sign Out
                     </button>
@@ -145,9 +145,9 @@ const NavBar: React.FC<NavBarProps> = ({isSignedIn, onSignInSuccess, onSignOut }
           <Link to="/dashboard" className="block px-3 py-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
             Dashboard
           </Link>
-          <Link to="/team" className="block px-3 py-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+          {/* <Link to="/team" className="block px-3 py-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
             Team
-          </Link>
+          </Link> */}
           <Link to="/resources" className="block px-3 py-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
             Resources
           </Link>
