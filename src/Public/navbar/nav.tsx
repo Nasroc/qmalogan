@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Disclosure, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon, BellIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon, 
+  // BellIcon 
+} from '@heroicons/react/24/outline';
 import logo from './qma-logo.png'; // Adjust the path to your logo
 import SignInModal from '../SignIn';
 import SignOutConfirmation from '../SignOutConfirmation'; // Add this line
