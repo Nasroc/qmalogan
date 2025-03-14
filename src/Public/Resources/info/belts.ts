@@ -189,6 +189,16 @@ export const belts = [
         smallDef: "The willingness to sacrifice yourself for the benefit of someone or something in which you believe.",
         month: "December",
     },
+    {
+        id: 0,
+        name: 'Black Belt',
+        image: blackStripe,
+        kup: '1st Dan',
+        form: 'Kyuki-Do Nakbop Hyung',
+        korean: '격기도낙법형 (擊氣道落法型)',
+        moves: 12,
+        meaning: "Form of Falling",
+    }
 ];
 
 export {belts as default};

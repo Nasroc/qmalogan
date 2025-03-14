@@ -20,3 +20,4 @@ export { Forms4 } from './Resources/info/forms/4';
 export { Forms3 } from './Resources/info/forms/3';
 export { Forms2 } from './Resources/info/forms/2';
 export { Forms1 } from './Resources/info/forms/1';
+export { Forms0 } from './Resources/info/forms/0';

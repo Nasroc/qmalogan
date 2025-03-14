@@ -31,29 +31,29 @@ export function FormContent({ beltData, nextBelt, prevBelt, nextFormLink, prevFo
                         ← Back to Forms
                     </h1>
                 </Link>
-            </div>
-
             {/* Page Title */}
-            <div className="text-center">
-                <h1 className="text-6xl font-extrabold text-gray-800 dark:text-white mb-4 leading-tight">
-                    {beltData?.form}
-                </h1>
-                <h1 className="text-6xl font-extrabold text-gray-800 dark:text-white mb-4 leading-tight">
-                    {beltData?.korean}
-                </h1>
-                <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                    Rank form for {beltData?.kup} ({beltData.name})
-                </p>
-                <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                    {nextBelt ? `Testing for ${nextBelt.kup} (${nextBelt.name})` : 'Testing for (Black Belt)'}
-                </p>
-
-                {/* Belt Image */}
-                <img 
-                    src={beltData?.image} 
-                    alt= "Belt" 
-                    className="h-auto mx-auto mt-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4"
-                />
+                <div className="text-center">
+                        <h1 className="text-6xl font-extrabold text-gray-800 dark:text-white mb-4 leading-tight">
+                            {beltData?.form}
+                        </h1>
+                        <h1 className="text-6xl font-extrabold text-gray-800 dark:text-white mb-4 leading-tight">
+                            {beltData?.korean}
+                        </h1>
+                    <div className={`${beltData?.id === 0 ? 'hidden' : ''}`}>
+                        <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                            Rank form for {beltData?.kup} ({beltData.name})
+                        </p>
+                        <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                            {nextBelt ? `Testing for ${nextBelt.kup} (${nextBelt.name})` : 'Testing for (Black Belt)'}
+                        </p>
+                        {/* Belt Image */}
+                        <img 
+                            src={beltData?.image} 
+                            alt="Belt" 
+                            className="h-auto mx-auto mt-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-4"
+                        />
+                    </div>
+                </div>
             </div>
 
             {/* Scroll Navigation */}

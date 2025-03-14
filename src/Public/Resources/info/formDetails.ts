@@ -476,6 +476,26 @@ export interface FormData {
         "Move left foot over to the right and pivot on left foot 180° toward D, forming a right-foot-forward front stance (orŭnbal apsŏgi) facing D. Execute a left reverse high section four-knuckle strike (sangdan bandae p'yŏnjumŏk jirŭgi), with your right hand ending up under your left elbow. Kihap."
       ],
       paro: "Return left leg to ready position."
-    }
+    },
+    {
+      id: 0,
+      readyPosition: "Parallel stance (naranhi sŏgi) at A facing B.",
+      pathImg: "/paths/nakbop.svg",
+      steps: [
+        "Begin by executing a standing back fall (koho ukemi).",
+        "Without putting your legs down, proceed directly to a supine left side fall (hidari sokuho ukemi).",
+        "Toss your hips up into the air and execute a supine right side fall (migi sokuho ukemi). Post on your right arm and swing your right leg back to a kneeling position with the left knee up. Drop the left knee.",
+        "Execute a kneeling front fall (zenpo ukemi). Tuck your right knee to your chest and come up to a kneeling position with the left knee up. Stand up to a closed stance (moasŏgi). Extend your right arm straight out from your body.",
+        "Step forward with your left foot into a left-foot-forward front stance (oenbal apsŏgi). Swing your right leg and right arm toward your left foot and execute a standing right side fall (tachi migi sokuho ukemi). Post on your right arm and come to your feet by swinging your right leg back. Step back with the left leg into a closed stance (moasŏgi). Extend your left arm straight out from your body.",
+        "Step forward with your right foot into a right-foot-forward front stance (orŭnbal apsŏgi). Swing your left leg and left arm toward your right foot and execute a standing left side fall (tachi hidari sokuho ukemi). Post on your left arm and come to your feet by swinging your left leg back. Step back with the right leg into a parallel stance (naranhi sŏgi).",
+        "Execute a standing front fall (tachi zenpo ukemi). Tuck your right knee to your chest and come up to a kneeling position with the left knee up. Stand up in a left-foot-forward back stance (oenbal dwissŏgi).",
+        "Reach toward B with your right arm and step forward into a standing right forward rolling fall (tachi migi zenpo kaiten). Land in the sidefall position. Post on your left arm and come to your feet by swinging your left leg back, standing up into a right-foot-forward back stance (orŭnbal dwissŏgi) facing B. Step clockwise toward B with your left leg, turning 180° into a right-foot-forward back stance (orŭnbal dwissŏgi) facing A.",
+        "Reach toward A with your left arm and step forward into a standing left forward rolling fall (tachi hidari zenpo kaiten). Land in the sidefall position. Post on your right arm and come to your feet by swinging your right leg back, standing up into a left-foot-forward back stance (oenbal dwissŏgi) facing A. Step counter-clockwise toward A with your right leg, turning 180° into a left-foot-forward back stance (oenbal dwissŏgi) facing B.",
+        "Reach toward B with your right arm and step forward into a standing right forward rolling fall (tachi migi zenpo kaiten). Roll directly to your feet, turning clockwise to face A in a right-foot-forward back stance (orŭnbal dwissŏgi).",
+        "Reach toward A with your left arm and step forward into a standing left forward rolling fall (tachi hidari zenpo kaiten). Roll directly to your feet, turning counter-clockwise to face B in a left-foot-forward back stance (oenbal dwissŏgi). Step back with the left foot into a parallel stance (naranhi sŏgi).",
+        "Execute a handstand or somersault into a back fall (koho ukemi). Land with the back very slightly arched. Sit up."
+      ],
+      paro: "Execute a backward shoulder roll over the right shoulder and stand up in a parallel stance (naranhi sŏgi) at A facing B."
+    },
   ];
   

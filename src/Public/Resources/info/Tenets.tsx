@@ -29,6 +29,17 @@ export function Tenets() {
                 <h1 className="text-6xl font-extrabold text-gray-800 dark:text-white mb-6 leading-tight tracking-tight">
                     The Tenets of Kyuki-Do
                 </h1>
+                {/*CHIPSI header*/}
+                <h2 className="text-4xl font-bold text-yellow-500 dark:text-yellow-300 mb-6 tracking-wide">
+                    C.H.I.P.S.I.
+                </h2>
+
+                
+                <h1 className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                    The tenets of Kyuki-Do are the guiding principles that shape the character and behavior of practitioners. They are essential for personal growth and development, and they help to create a positive and respectful training environment.
+                </h1>
+
+
             </div>
 
             {/* Tenets Section */}

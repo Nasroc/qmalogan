@@ -12,6 +12,7 @@ interface FormTechniques {
     stances: Technique[];
     strikes: Technique[];
     throws: Technique[];
+    falls?: Technique[];
     traps: Technique[];
     armLocks: Technique[];
     rolls: Technique[];
@@ -1516,6 +1517,99 @@ export const formTech: FormTechniques[] = [
         rolls: [],
         chokes: [],
         escapes: [],
+    },
+    {
+        id: 0,
+        blocks: [],
+        breathings: [],
+        kicks: [],
+        stances: [
+            {
+                english: "Closed stance",
+                korean: "moasŏgi",
+                hangul: "모아서기"
+            },
+            {
+                english: "Left-foot-forward back stance",
+                korean: "oenbal dwissŏgi",
+                hangul: "왼발 뒷서기"
+            },
+            {
+                english: "Left-foot-forward front stance",
+                korean: "oenbal apsŏgi",
+                hangul: "왼발 앞서기"
+            },
+            {
+                english: "Parallel stance",
+                korean: "naranhi sŏgi",
+                hangul: "나란히 서기"
+            },
+            {
+                english: "Right-foot-forward back stance",
+                korean: "orŭnbal dwissŏgi",
+                hangul: "오른발 뒷서기"
+            },
+            {
+                english: "Right-foot-forward front stance",
+                korean: "orŭnbal apsŏgi",
+                hangul: "오른발 앞서기"
+            }
+        ],
+        strikes: [],
+        throws: [],
+        traps: [],
+        armLocks: [],
+        rolls: [
+            {
+                english: "Standing left forward rolling fall",
+                korean: "tachi hidari zenpo kaiten",
+                hangul: "立ち左前方回転"
+            },
+            {
+                english: "Standing right forward rolling fall",
+                korean: "tachi migi zenpo kaiten",
+                hangul: "立ち右前方回転"
+            }
+        ],
+        chokes: [],
+        escapes: [],
+        falls: [
+            {
+                english: "Back fall",
+                korean: "koho ukemi",
+                hangul: "後方受身"
+            },
+            {
+                english: "Front fall",
+                korean: "zenpo ukemi",
+                hangul: "前方受身"
+            },
+            {
+                english: "Left side fall",
+                korean: "hidari sokuho ukemi",
+                hangul: "左側方受身"
+            },
+            {
+                english: "Right side fall",
+                korean: "migi sokuho ukemi",
+                hangul: "右側方受身"
+            },
+            {
+                english: "Standing front fall",
+                korean: "tachi zenpo ukemi",
+                hangul: "立ち前方受身"
+            },
+            {
+                english: "Standing left side fall",
+                korean: "tachi hidari sokuho ukemi",
+                hangul: "立ち左側方受身"
+            },
+            {
+                english: "Standing right side fall",
+                korean: "tachi migi sokuho ukemi",
+                hangul: "立ち右側方受身"
+            }
+        ]
     }
 ];
 
