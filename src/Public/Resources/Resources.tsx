@@ -6,11 +6,11 @@ const resources = [
         description:
             'Go to the forms page so you can study and learn the different Forms of Kyuki-Do.',
     },
-    // {
-    //     name: 'tenets',
-    //     description:
-    //         'There are SIX different Tenets of Kyuki-do.\nGo to the Tenets Page to learn the different tenets and how we can exhibit them.',
-    // },
+    {
+        name: 'tenets',
+        description:
+            'There are SIX different Tenets of Kyuki-do.\nGo to the Tenets Page to learn the different tenets and how we can exhibit them.',
+    },
     // {
     //     name: 'pledges',
     //     description:
@@ -26,7 +26,7 @@ const resources = [
 export function Resources() {
     return (
         <section 
-            className="flex flex-col items-center justify-start py-16 w-full custom-bg custom-dark transition-colors duration-300" 
+            className="flex flex-col items-center justify-start py-12 w-full custom-bg custom-dark transition-colors duration-300" 
             style={{ minHeight: 'calc(100vh - 5rem)' }}
         >
             {/* Header */}
@@ -42,7 +42,7 @@ export function Resources() {
                         to={`/resources/info/${resource.name}`}
                         className="w-full transition-transform duration-300 ease-in-out hover:scale-105"
                     >
-                        <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl border border-gray-300 dark:border-gray-700 hover:border-yellow-400 transition-colors h-[300px] flex flex-col items-center justify-center text-center">
+                        <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl border border-gray-300 dark:border-gray-700 hover:border-yellow-400 transition-colors h-[300px] flex flex-col items-center justify-center text-center lg:mx-auto mx-8">
                             {/* Resource Name */}
                             <h3 className="text-4xl font-semibold text-gray-800 dark:text-white capitalize mb-4">
                                 {resource.name}

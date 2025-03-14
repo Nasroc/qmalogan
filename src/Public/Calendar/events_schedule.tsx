@@ -12,7 +12,7 @@ export function Events_Schedule({ isAdmin }: EventsScheduleProps) {
         >
             <div className="w-full max-w-7xl space-y-8">
                 {/* Header */}
-                <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 text-center transition-colors duration-300">
+                <h1 className="text-5xl font-bold text-gray-800 dark:text-gray-100 text-center transition-colors duration-300">
                     Events & Schedule
                 </h1>
 
