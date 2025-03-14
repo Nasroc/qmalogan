@@ -12,7 +12,7 @@ export function Pledges() {
     return (
         <section 
             className="flex flex-col items-center gap-12 py-20 px-8 custom-bg custom-dark transition-colors"
-            style={{ minHeight: 'calc(100vh - 5rem)' }}
+            style={{ minHeight: '75.2vh' }}
         >
             {/* Back to Resources Link */}
             <Link 

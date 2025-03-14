@@ -6,6 +6,10 @@ export { Forms } from './Resources/info/Forms';
 export { Tenets } from './Resources/info/Tenets';
 export { Pledges } from './Resources/info/Pledge';
 export { Judo } from './Resources/info/Judo';
+export { default as Footer } from './Footer/footer';
+export { default as TermsAndConditions } from './Footer/terms';
+export { default as PrivacyPolicy } from './Footer/privacy';
+export { default as CookiesPolicy } from './Footer/cookies';
 
 // Forms
 export { Forms12 } from './Resources/info/forms/12'; 
