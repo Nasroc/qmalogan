@@ -87,7 +87,7 @@ const Settings: React.FC = () => {
     };
 
      // ✅ Handle cropping changes
-      const onCropComplete = useCallback((croppedArea: any, croppedAreaPixels: any) => {
+      const onCropComplete = useCallback((_: any, croppedAreaPixels: any) => {
         setCroppedAreaPixels(croppedAreaPixels);
       }, []);
 
