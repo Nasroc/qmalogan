@@ -7,6 +7,8 @@ import { Bars3Icon, XMarkIcon,
 import logo from './qma-logo.png'; // Adjust the path to your logo
 import SignInModal from '../SignIn';
 import SignOutConfirmation from '../SignOutConfirmation'; // Add this line
+import { auth, onAuthStateChanged, getUserData, onSnapshot, doc, db } from '../../api/firebase';
+import { useEffect, useState } from 'react';
 
 interface NavBarProps {
   isSignedIn: boolean;
@@ -17,7 +19,65 @@ interface NavBarProps {
 const NavBar: React.FC<NavBarProps> = ({isSignedIn, onSignInSuccess, onSignOut }) => {
   const [showSignInModal, setShowSignInModal] = React.useState(false);
   const [showSignOutConfirmation, setShowSignOutConfirmation] = React.useState(false); // Add this line
+  const [profilePicUrl, setProfilePicUrl] = useState<string | null>(null);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  // Removed unused userId state
 
+  const [user, setUser] = useState<any | null>(null);
+
+  useEffect(() => {
+    if (!user?.uid) return;
+
+    const unsubscribe = onSnapshot(doc(db, "users", user.uid), (doc) => {
+      if (doc.exists()) {
+        const data = doc.data();
+        setProfilePicUrl(data.profilePic || null);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [user?.uid]);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+      setUser(authUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
+  
+
+ // ✅ Fetch user data from Firebase
+ const fetchUserData = async (userId: string) => {
+  try {
+    const userData = await getUserData(userId);
+    if (userData) {
+      setFirstName(userData.firstName || "");
+      setLastName(userData.lastName || "");
+      if (userData.profilePic) {
+        setProfilePicUrl(userData.profilePic);
+      }
+    }
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+  }
+};
+
+ // ✅ Listen for Firebase auth state changes
+ useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      // Removed setting userId as it is no longer used
+      await fetchUserData(user.uid);
+    } else {
+      // Removed clearing userId as it is no longer used
+    }
+  });
+
+  // Clean up the listener when component unmounts
+  return () => unsubscribe();
+}, []);
 
   const handleSignInClick = () => {
     setShowSignInModal(true);
@@ -85,28 +145,37 @@ const NavBar: React.FC<NavBarProps> = ({isSignedIn, onSignInSuccess, onSignOut }
               <span className="sr-only">View notifications</span>
               <BellIcon aria-hidden="true" className="size-6" />
             </button> */}
-
+            {/* Display user's first name if signed in */}
+            {isSignedIn && (
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-100">
+                    {firstName} {lastName}
+                  </span>
+                )}
             <Menu as="div" className="relative ml-3">
               <div>
-                <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
-                  <span className="absolute -inset-1.5" />
-                  <span className="sr-only">Open user menu</span>
-                  {isSignedIn ? (
-                  <img
-                    alt=""
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    className="size-8 rounded-full"
+                <MenuButton className="relative flex items-center justify-center h-10 w-10 rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 overflow-hidden">
+                <span className="absolute -inset-1.5" />
+                <span className="sr-only">Open user menu</span>
+                {isSignedIn && profilePicUrl ? (
+                  <img 
+                    alt="User Profile" 
+                    src={profilePicUrl} 
+                    className="h-full w-full object-cover" // Image scales to the container size
                   />
-                  ) : (
+                ) : (
                   <QuestionMarkIcon />
-                  )}
-                </MenuButton>
+                )}
+              </MenuButton>
+
+                {isSignedIn && (
+                  <span className="absolute top-0 right-0 block h-2.5 w-2.5 rounded-full bg-green-400 border border-white dark:border-gray-800" />
+                )}
               </div>
               <MenuItems
                 transition
                 className="absolute right-0 z-20 mt-2 w-48 rounded-md bg-white dark:bg-gray-800 shadow-lg ring-1 ring-black/5 dark:ring-white/10 focus:outline-none transition-transform origin-top-right scale-95 opacity-0 data-open:scale-100 data-open:opacity-100"
               >
-                {/* <MenuItem>
+                <MenuItem>
                   {({ active }) => (
                     <Link
                       to="/settings"
@@ -117,7 +186,7 @@ const NavBar: React.FC<NavBarProps> = ({isSignedIn, onSignInSuccess, onSignOut }
                       Settings
                     </Link>
                   )}
-                </MenuItem> */}
+                </MenuItem>
                 <MenuItem>
                   {isSignedIn ? (
                     <button

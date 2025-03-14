@@ -12,9 +12,14 @@
     "version": "standard-version"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@firebase/firestore": "^4.7.9",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
+    "@mui/material": "^6.4.7",
     "autoprefixer": "^10.4.20",
     "date-fns": "^4.1.0",
     "firebase": "^11.4.0",
@@ -22,6 +27,7 @@
     "postcss": "^8.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-easy-crop": "^5.4.1",
     "react-router-dom": "^7.3.0",
     "vite-tsconfig-paths": "^5.1.4"
   },

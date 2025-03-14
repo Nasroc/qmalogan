@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { NavBar, Dashboard, Events_Schedule, Resources, Forms, Tenets, Pledges, Judo, Forms12,
   Forms11, Forms10, Forms9, Forms8, Forms7, Forms6, Forms5, Forms4, Forms3, Forms2, Forms1, Forms0, Footer,
-  TermsAndConditions, PrivacyPolicy, CookiesPolicy
+  TermsAndConditions, PrivacyPolicy, CookiesPolicy, Settings
 } from './index';
 import './App.css';
 
@@ -74,6 +74,7 @@ function App() {
           <Route path="/terms" element={<TermsAndConditions />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/cookies" element={<CookiesPolicy />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
         <Footer />
       </div>

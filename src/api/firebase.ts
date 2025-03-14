@@ -1,20 +1,18 @@
 import { initializeApp, getApps } from 'firebase/app';
-import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, onSnapshot, updateDoc } from 'firebase/firestore'; // Added updateDoc for editing events
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth'; // Import auth methods
+import { getFirestore, collection, getDocs, getDoc, addDoc, deleteDoc, doc, onSnapshot, updateDoc, setDoc } from 'firebase/firestore';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from 'firebase/auth';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
-// Define the structure of an event
 interface Event {
   date: string;
   title: string;
   time?: string;
 }
 
-// Extend the Event interface to include an ID for Firestore documents
 interface EventWithId extends Event {
   id: string;
 }
 
-// Firebase configuration (copy this from your Firebase Console)
 const firebaseConfig = {
   apiKey: "AIzaSyA8E3JH5VmBNtXJoUx9VVl8asN5ZToqZ2g",
   authDomain: "qmavite.firebaseapp.com",
@@ -25,32 +23,28 @@ const firebaseConfig = {
   measurementId: "G-1YRF1PZ8WJ"
 };
 
-// Initialize Firebase (only if not already initialized)
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 
-// Initialize Firestore and Authentication
 const db = getFirestore(app);
 const auth = getAuth(app);
+const storage = getStorage(app);
 
-// Firebase Auth Methods (for Sign-In, Sign-Up, and Sign-Out)
-const signUpUser = async (email: string, password: string) => {
-  try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    // Optionally, you can save additional user info to Firestore here (e.g., role)
-    return userCredential.user;
-  } catch (error) {
-    console.error("Error signing up:", error);
-    throw error;
+const signUpUser = async (email: string, password: string, displayName?: string) => {
+  const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  if (displayName) {
+    await updateProfile(userCredential.user, { displayName });
   }
+  return userCredential.user;
 };
 
 const signInUser = async (email: string, password: string) => {
-  try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    return userCredential.user;
-  } catch (error) {
-    console.error("Error signing in:", error);
-    throw error;
+  const userCredential = await signInWithEmailAndPassword(auth, email, password);
+  return userCredential.user;
+};
+
+export const updateUserProfile = async (displayName: string, photoURL?: string) => {
+  if (auth.currentUser) {
+    await updateProfile(auth.currentUser, { displayName, photoURL });
   }
 };
 
@@ -62,6 +56,27 @@ const listenAuthState = (callback: (user: any) => void) => {
   onAuthStateChanged(auth, callback);
 };
 
-// Export necessary functions and types for use in other parts of your app
-export { db, collection, getDocs, addDoc, deleteDoc, doc, onSnapshot, updateDoc, auth, signUpUser, signInUser, signOutUser, listenAuthState };
+const getUserData = async (uid: string) => {
+  const userDoc = await getDoc(doc(db, 'users', uid));
+  if (userDoc.exists()) {
+    return userDoc.data();
+  }
+  return null;
+};
+
+const setUserData = async (uid: string, data: object) => {
+  await setDoc(doc(db, 'users', uid), data, { merge: true });
+};
+
+const updateUserData = async (uid: string, data: object) => {
+  await updateDoc(doc(db, 'users', uid), data);
+};
+
+const uploadProfilePicture = async (uid: string, file: File) => {
+  const storageRef = ref(storage, `profilePictures/${uid}`);
+  await uploadBytes(storageRef, file);
+  return await getDownloadURL(storageRef);
+};
+
+export { uploadProfilePicture, getUserData, setUserData, updateUserData, db, collection, getDocs, addDoc, deleteDoc, doc, onSnapshot, updateDoc, auth, signUpUser, signInUser, signOutUser, listenAuthState, storage, onAuthStateChanged, getAuth };
 export type { Event, EventWithId };
