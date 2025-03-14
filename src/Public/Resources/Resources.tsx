@@ -11,11 +11,11 @@ const resources = [
         description:
             'There are SIX different Tenets of Kyuki-do.\nGo to the Tenets Page to learn the different tenets and how we can exhibit them.',
     },
-    // {
-    //     name: 'pledges',
-    //     description:
-    //         'Along with our Tenets, there are also FIVE pledges that students must make.\nGo to the Pledges page to learn the different pledges.',
-    // },
+    {
+        name: 'pledges',
+        description:
+            'Along with our Tenets, there are also FIVE pledges that students must make.\nGo to the Pledges page to learn the different pledges.',
+    },
     // {
     //     name: 'judo',
     //     description:
