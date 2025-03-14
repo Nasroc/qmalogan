@@ -14,13 +14,13 @@ const resources = [
     {
         name: 'pledges',
         description:
-            'Along with our Tenets, there are also FIVE pledges that students must make.\nGo to the Pledges page to learn the different pledges.',
+            'Along with our Tenets, there are also FIVE pledges that students will make.\nGo to the Pledges page to learn the different pledges.',
     },
-    // {
-    //     name: 'judo',
-    //     description:
-    //         'Judo is a wonderful martial art that we like to participate in occasionally.\nIn class, we will talk about different judo throws, using their Japanese names.\nTo help with recognizing these throws and their names, go to the Judo page to learn them.',
-    // },
+    {
+        name: 'judo',
+        description:
+            'Judo is a wonderful martial art that we like to participate in occasionally.\nIn class, we will talk about different judo throws, using their Japanese names.\nTo help with recognizing these throws and their names, go to the Judo page to learn them.',
+    },
 ];
 
 export function Resources() {
