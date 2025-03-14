@@ -27,7 +27,7 @@ export function Tenets() {
             {/* Page Title */}
             <div className="text-center">
                 <h1 className="text-6xl font-extrabold text-gray-800 dark:text-white mb-4 leading-tight">
-                    The Tenets of Kyuki-Do
+                    The Tenets of Kyuki-Do - test
                 </h1>
             </div>
 
