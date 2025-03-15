@@ -48,3 +48,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           clean: true
+      - name: Invalidate Cloudflare Cache
+        uses: cloudflare/gh-action@v2
+        with:
+          api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          zone_id: ${{ secrets.CLOUDFLARE_ZONE_ID }}
