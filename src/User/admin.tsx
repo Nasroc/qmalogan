@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { getAllUsers, deleteUser, sendMassEmail } from "../api/firebase";
+import { getAllUsers, deleteUser} from "../api/firebase";
 import { Tab } from "@headlessui/react";
 
 const Admin: React.FC = () => {
   const [users, setUsers] = useState<any[]>([]);
   const [emailSubject, setEmailSubject] = useState("");
   const [emailBody, setEmailBody] = useState("");
-  const [loading, setLoading] = useState(false);
+  // Removed unused loading state
   const [fetchingUsers, setFetchingUsers] = useState(true);
 
   // ✅ Fetch all users when component mounts
@@ -184,12 +184,8 @@ const Admin: React.FC = () => {
                 />
                 <button
                   onClick={handleSendMassEmail}
-                  disabled={loading}
-                  className={`w-full bg-blue-500 text-white py-3 px-6 rounded-md ${
-                    loading ? "opacity-50" : "hover:bg-blue-600"
-                  } transition`}
+                  className="w-full bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-blue-600 transition"
                 >
-                  {loading ? "Sending..." : "Send Email"}
                 </button>
               </div>
             </Tab.Panel>
