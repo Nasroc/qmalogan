@@ -148,35 +148,7 @@ const Settings: React.FC = () => {
       if (newPassword) {
         await updateUserProfile(newPassword);
       }
-          // ✅ If the user agrees to receive emails, subscribe them to the mailing list using the subscribeUser function
-    if (agreeToEmails) {
-      try {
-        const response = await fetch('https://us-central1-qmavite.cloudfunctions.net/subscribeUser', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            email: contactEmail,
-            firstName,
-            lastName,
-            agreeToEmails,
-          }),
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-          console.log('User subscribed successfully:', result);
-        } else {
-          console.error('Error subscribing user:', result);
-          alert('Failed to subscribe to emails.');
-        }
-      } catch (error) {
-        console.error('Error calling subscribeUser function:', error);
-        alert('Failed to subscribe to emails.');
-      }
-    }
+      
 
       alert("Settings updated successfully!");
     } catch (error) {
