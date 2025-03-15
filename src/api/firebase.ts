@@ -78,5 +78,33 @@ const uploadProfilePicture = async (uid: string, file: File) => {
   return await getDownloadURL(storageRef);
 };
 
-export { uploadProfilePicture, getUserData, setUserData, updateUserData, db, collection, getDocs, addDoc, deleteDoc, doc, onSnapshot, updateDoc, auth, signUpUser, signInUser, signOutUser, listenAuthState, storage, onAuthStateChanged, getAuth };
+// ✅ Get all users
+const getAllUsers = async () => {
+  const usersSnapshot = await getDocs(collection(db, "users"));
+  return usersSnapshot.docs.map((doc) => ({ uid: doc.id, ...doc.data() }));
+};
+// ✅ Delete a user
+const deleteUser = async (uid: string) => {
+  await deleteDoc(doc(db, "users", uid));
+};
+// ✅ Send mass email (Example using SendGrid or other email service)
+const sendMassEmail = async (subject: string, body: string) => {
+  const response = await fetch("", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ subject, body }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to send email");
+  }
+};
+
+export { 
+  uploadProfilePicture, getUserData, setUserData, updateUserData, db, collection, 
+  getDocs, addDoc, deleteDoc, doc, onSnapshot, updateDoc, auth, signUpUser, signInUser, 
+  signOutUser, listenAuthState, storage, onAuthStateChanged, getAuth, getAllUsers,
+  deleteUser, sendMassEmail, setDoc
+
+};
 export type { Event, EventWithId };

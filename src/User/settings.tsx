@@ -8,6 +8,7 @@ import getCroppedImg from '../utils/cropImage'; // Helper function to crop image
 import { Slider } from '@mui/material';
 import Cropper from 'react-easy-crop';
 
+
 const Settings: React.FC = () => {
   const [uid, setUserId] = useState<string | null>(null);
   const [firstName, setFirstName] = useState("");
@@ -147,6 +148,35 @@ const Settings: React.FC = () => {
       if (newPassword) {
         await updateUserProfile(newPassword);
       }
+          // ✅ If the user agrees to receive emails, subscribe them to the mailing list using the subscribeUser function
+    if (agreeToEmails) {
+      try {
+        const response = await fetch('https://us-central1-qmavite.cloudfunctions.net/subscribeUser', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: contactEmail,
+            firstName,
+            lastName,
+            agreeToEmails,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          console.log('User subscribed successfully:', result);
+        } else {
+          console.error('Error subscribing user:', result);
+          alert('Failed to subscribe to emails.');
+        }
+      } catch (error) {
+        console.error('Error calling subscribeUser function:', error);
+        alert('Failed to subscribe to emails.');
+      }
+    }
 
       alert("Settings updated successfully!");
     } catch (error) {
@@ -156,7 +186,7 @@ const Settings: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+    <div className="min-h-screen custom-bg custom-dark flex items-center justify-center">
       <div className="w-full max-w-6xl bg-white dark:bg-gray-800 shadow-xl rounded-lg p-12">
         <h2 className="text-4xl font-bold mb-8 text-gray-800 dark:text-gray-100">
           Account Settings

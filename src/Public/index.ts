@@ -30,3 +30,4 @@ export { Forms0 } from './Resources/info/forms/0';
 
 // User Only Components
 export { default as Settings } from '../User/settings';
+export { default as Admin } from '../User/admin';

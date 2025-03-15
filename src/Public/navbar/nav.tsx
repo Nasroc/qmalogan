@@ -14,9 +14,10 @@ interface NavBarProps {
   isSignedIn: boolean;
   onSignInSuccess: (role:string) => void; // Add this line
   onSignOut: () => void; // Add this line
+  isAdmin: boolean; // Add this line if you need to check for admin
 }
 
-const NavBar: React.FC<NavBarProps> = ({isSignedIn, onSignInSuccess, onSignOut }) => {
+const NavBar: React.FC<NavBarProps> = ({isSignedIn, onSignInSuccess, onSignOut, isAdmin }) => {
   const [showSignInModal, setShowSignInModal] = React.useState(false);
   const [showSignOutConfirmation, setShowSignOutConfirmation] = React.useState(false); // Add this line
   const [profilePicUrl, setProfilePicUrl] = useState<string | null>(null);
@@ -187,6 +188,23 @@ const NavBar: React.FC<NavBarProps> = ({isSignedIn, onSignInSuccess, onSignOut }
                     </Link>
                   )}
                 </MenuItem>
+                {/*if admin show admin panel*/}
+                {isAdmin && (
+                  <MenuItem>
+                    {({ active }) => (
+                      <Link
+                        to="/admin"
+                        className={`block px-4 py-2 text-sm ${
+                          active ? 'bg-gray-200 dark:bg-gray-700' : 'text-gray-700 dark:text-gray-300'
+                        }`}
+                      >
+                        Admin Panel
+                      </Link>
+                    )}
+                  </MenuItem>
+                )}
+
+
                 <MenuItem>
                   {isSignedIn ? (
                     <button

@@ -22,5 +22,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "src/api/firebase.ts", "src/types/heroicons.d.ts"]
+  "include": ["src", "src/api/firebase.ts", "src/types/heroicons.d.ts", "pages/api/send-email.ts"]
 }
