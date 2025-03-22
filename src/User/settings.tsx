@@ -7,6 +7,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import getCroppedImg from '../utils/cropImage'; // Helper function to crop image
 import { Slider } from '@mui/material';
 import Cropper from 'react-easy-crop';
+import  subscribeUser from './subscribeUser'; // Assuming this is the correct path
 
 
 const Settings: React.FC = () => {
@@ -122,19 +123,18 @@ const Settings: React.FC = () => {
   // ✅ Handle form submission and update data in Firebase
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+  
     if (!uid) {
       alert("User not logged in");
       return;
     }
-
+  
     if (newPassword && newPassword !== confirmPassword) {
       alert("Passwords do not match");
       return;
     }
-
+  
     try {
-      // Update user data in Firestore
       await setUserData(uid, {
         firstName,
         lastName,
@@ -143,13 +143,21 @@ const Settings: React.FC = () => {
         agreeToEmails,
         profilePic: profilePicUrl,
       });
-
-      // Update password if provided
+  
+      if (agreeToEmails) {
+        try {
+          await subscribeUser(email);
+          console.log("Subscribed successfully");
+        } catch (error) {
+          console.error("Failed to subscribe:", error);
+          alert("Failed to subscribe to mailing list.");
+        }
+      }
+  
       if (newPassword) {
         await updateUserProfile(newPassword);
       }
-      
-
+  
       alert("Settings updated successfully!");
     } catch (error) {
       console.error("Error updating settings:", error);

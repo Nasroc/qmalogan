@@ -11,4 +11,11 @@ export default defineConfig({
   css: {
     postcss: '/postcss.config.js',
   },
+  build: {
+    outDir: 'dist', // ✅ Ensures output goes to 'dist'
+    sourcemap: true
+  },
+  server: {
+    port: 3000
+  }
 })
