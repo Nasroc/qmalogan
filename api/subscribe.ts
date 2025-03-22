@@ -1,13 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { VercelRequest, VercelResponse } from '@vercel/node';
 
 const serverPrefix = process.env.MAILCHIMP_SERVER_PREFIX;
 const listId = process.env.MAILCHIMP_LIST_ID;
 const apiKey = process.env.MAILCHIMP_API_KEY;
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }

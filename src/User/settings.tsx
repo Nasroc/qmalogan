@@ -7,7 +7,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import getCroppedImg from '../utils/cropImage'; // Helper function to crop image
 import { Slider } from '@mui/material';
 import Cropper from 'react-easy-crop';
-import  subscribeUser from './subscribeUser'; // Assuming this is the correct path
+import  subscribeUser from '../api/subscribeUser'; // Assuming this is the correct path
 
 
 const Settings: React.FC = () => {
