@@ -1,6 +1,4 @@
 const subscribeUser = async (email: string) => {
-  if (!email) throw new Error("Invalid email");
-
   const response = await fetch('/api/subscribe', {
     method: 'POST',
     headers: {
@@ -9,14 +7,21 @@ const subscribeUser = async (email: string) => {
     body: JSON.stringify({ email }),
   });
 
-  if (response.status !== 204) {
-    const data = await response.json();
-    if (!response.ok) {
-      throw new Error(data.error || 'Failed to subscribe');
-    }
+  if (response.status === 204) {
+    // ✅ Handle empty response (no content)
+    return;
   }
 
-  return await response.json();
+  // ✅ Check if response is JSON before parsing
+  const data = response.headers.get('content-type')?.includes('application/json')
+    ? await response.json()
+    : null;
+
+  if (!response.ok) {
+    throw new Error(data?.error || 'Failed to subscribe');
+  }
+
+  return data;
 };
 
 export default subscribeUser;

@@ -4,7 +4,10 @@ const serverPrefix = process.env.MAILCHIMP_SERVER_PREFIX;
 const listId = process.env.MAILCHIMP_LIST_ID;
 const apiKey = process.env.MAILCHIMP_API_KEY;
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(
+  req: VercelRequest,
+  res: VercelResponse
+) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
@@ -39,6 +42,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).json({ message: 'Successfully subscribed!' });
   } catch (error: any) {
     console.error('Error subscribing to Mailchimp:', error);
-    return res.status(400).json({ error: error.message });
+
+    // ✅ Return a valid JSON response even on failure
+    return res.status(400).json({
+      error: error.message || 'Failed to subscribe to Mailchimp',
+    });
   }
 }
