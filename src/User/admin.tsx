@@ -183,6 +183,7 @@ const Admin: React.FC = () => {
                   onClick={handleSendMassEmail}
                   className="w-full bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-blue-600 transition"
                 >
+                  Send Email
                 </button>
               </div>
             </Tab.Panel>
