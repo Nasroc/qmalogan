@@ -8,6 +8,7 @@ const Admin: React.FC = () => {
   const [users, setUsers] = useState<any[]>([]);
   const [emailSubject, setEmailSubject] = useState("");
   const [emailBody, setEmailBody] = useState("");
+  const [isSending, setIsSending] = useState(false);
   // Removed unused loading state
   const [fetchingUsers, setFetchingUsers] = useState(true);
 
@@ -44,23 +45,37 @@ const Admin: React.FC = () => {
 
   // ✅ Handle mass email submission
   const handleSendMassEmail = async () => {
-    const res = await fetch("https://your-site.netlify.app/.netlify/functions/sendNewsletter", {
+    if (!emailSubject || !emailBody) {
+      alert("Please fill in both the subject and email body.");
+      return;
+    }
+    setIsSending(true);
+    try {
+    const res = await fetch("https://qmalogan.netlify.app/.netlify/functions/sendNewsletter", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        subject: "April Newsletter",
-        html: "<h1>Welcome back!</h1><p>Here’s what’s new.</p>"
+        subject: emailSubject,
+        html: emailBody
       })
     });
   
-    if (res.ok) {
-      alert("Email sent!");
-    } else {
-      alert("Failed to send.");
+      if (res.ok) {
+        alert("Email sent!");
+        setEmailSubject("");
+        setEmailBody("");
+      } else {
+        alert("Something went wrong.");
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsSending(false);
     }
   };
+  
 
   return (
     <div className="custom-bg custom-dark flex items-center justify-center"
@@ -181,11 +196,23 @@ const Admin: React.FC = () => {
                 />
                 <button
                   onClick={handleSendMassEmail}
-                  className="w-full bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-blue-600 transition"
+                  disabled={isSending}
+                  className={`w-full bg-blue-500 text-white py-3 px-6 rounded-md transition ${
+                    isSending ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-600"
+                  }`}
                 >
-                  Send Email
+                  {isSending ? "Sending..." : "Send Email"}
                 </button>
+
               </div>
+              <div className="mt-6 p-4 bg-gray-100 dark:bg-gray-700 rounded">
+              <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Preview:</h4>
+              <div
+                className="prose dark:prose-invert max-w-none"
+                dangerouslySetInnerHTML={{ __html: emailBody }}
+              />
+            </div>
+
             </Tab.Panel>
           </Tab.Panels>
         </Tab.Group>

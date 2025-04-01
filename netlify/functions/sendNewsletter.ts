@@ -21,8 +21,8 @@ const handler: Handler = async (event, _context) => {
         settings: {
           subject_line: subject,
           title: subject,
-          from_name: 'Your Business',
-          reply_to: 'you@example.com',
+          from_name: 'Mark Allman',
+          reply_to: 'logankarate@gmail.com',
         },
       }),
     });
