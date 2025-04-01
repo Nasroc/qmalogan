@@ -44,24 +44,21 @@ const Admin: React.FC = () => {
 
   // ✅ Handle mass email submission
   const handleSendMassEmail = async () => {
-    try {
-      const response = await fetch("/api/send-mass-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          subject: "Martial Arts Event Update",
-          body: "<p>We're excited to see you at our next event!</p>",
-        }),
-      });
+    const res = await fetch("https://your-site.netlify.app/.netlify/functions/sendNewsletter", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        subject: "April Newsletter",
+        html: "<h1>Welcome back!</h1><p>Here’s what’s new.</p>"
+      })
+    });
   
-      if (!response.ok) {
-        throw new Error(`Failed to send email: ${response.statusText}`);
-      }
-  
-      alert("Mass email sent successfully!");
-    } catch (error) {
-      console.error("Error sending email:", error);
-      alert("Failed to send email.");
+    if (res.ok) {
+      alert("Email sent!");
+    } else {
+      alert("Failed to send.");
     }
   };
 

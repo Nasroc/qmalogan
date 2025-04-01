@@ -7,11 +7,14 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import getCroppedImg from '../utils/cropImage'; // Helper function to crop image
 import { Slider } from '@mui/material';
 import Cropper from 'react-easy-crop';
-import  subscribeUser from '../api/subscribeUser'; // Assuming this is the correct path
+import MailchimpModal from "./emailSubscrbe";
+import MailchimpUnsubscribeModal from "./emailUnSubscribe";
+import MailchimpResubscribeModal from "./emailReSubscribe";
 
 
 const Settings: React.FC = () => {
   const [uid, setUserId] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,6 +23,9 @@ const Settings: React.FC = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [agreeToEmails, setAgreeToEmails] = useState(false);
+  const [prevSubscription, setPrevSubscription] = useState(false); // Added for unsubscribe modal
+  const [isUnsubscribeModalOpen, setIsUnsubscribeModalOpen] = useState(false);
+  const [isResubscribeModalOpen, setIsResubscribeModalOpen] = useState(false);
   // Removed unused profilePic state
   const [profilePicUrl, setProfilePicUrl] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState({
@@ -45,6 +51,7 @@ const Settings: React.FC = () => {
        setEmail(userData.email || "");
        setContactEmail(userData.contactEmail || "");
        setAgreeToEmails(userData.agreeToEmails || false);
+       setPrevSubscription(userData.prevSubscription || false); // Added for unsubscribe modal
 
        if (userData.profilePic) {
          setProfilePicUrl(userData.profilePic);
@@ -69,6 +76,23 @@ const Settings: React.FC = () => {
    // Clean up the listener when component unmounts
    return () => unsubscribe();
  }, []);
+
+ useEffect(() => {
+  const updateEmailPreference = async () => {
+    if (uid !== null) {
+      try {
+        await setUserData(uid, { agreeToEmails });
+        await setUserData(uid, { prevSubscription });
+        console.log(`Firestore updated: agreeToEmails = ${agreeToEmails}`);
+        console.log(`Firestore updated: prevSubscription = ${prevSubscription}`);
+      } catch (error) {
+        console.error("Failed to update Firestore:", error);
+      }
+    }
+  };
+
+  updateEmailPreference(); // Call the function on state change
+}, [agreeToEmails]);
 
     // ✅ Toggle password visibility
   const togglePasswordVisibility = (field: string) => {
@@ -141,30 +165,19 @@ const Settings: React.FC = () => {
         email,
         contactEmail,
         agreeToEmails,
+        prevSubscription,
         profilePic: profilePicUrl,
       });
-  
-      if (agreeToEmails) {
-        try {
-          await subscribeUser(email);
-          console.log("Subscribed successfully");
-        } catch (error) {
-          console.error("Failed to subscribe:", error);
-          alert("Failed to subscribe to mailing list.");
-        }
-      }
   
       if (newPassword) {
         await updateUserProfile(newPassword);
       }
   
-      alert("Settings updated successfully!");
     } catch (error) {
       console.error("Error updating settings:", error);
       alert("Failed to update settings. Please try again.");
     }
   };
-
   return (
     <div className="min-h-screen custom-bg custom-dark flex items-center justify-center">
       <div className="w-full max-w-6xl bg-white dark:bg-gray-800 shadow-xl rounded-lg p-12">
@@ -313,19 +326,6 @@ const Settings: React.FC = () => {
                   className="w-full border rounded-md px-4 py-3 focus:ring-2 focus:ring-blue-500"
                 />
               </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-1">
-                  Contact Email
-                </label>
-                <input
-                  type="email"
-                  value={contactEmail}
-                  onChange={(e) => setContactEmail(e.target.value)}
-                  placeholder="contact@example.com"
-                  className="w-full border rounded-md px-4 py-3 focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
             </div>
           </div>
 
@@ -369,24 +369,69 @@ const Settings: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
+            <div>
+            {/* ✅ Email Notifications */}
+            <div className="flex items-center justify-center mt-6">
+              <button
+                type="button"
+                onClick={() => {
+                  if 
+                  (agreeToEmails) {
+                      setIsUnsubscribeModalOpen(true);
 
-          {/* Email Notifications */}
-          <div className="flex items-center gap-3">
-            <input
-              type="checkbox"
-              checked={agreeToEmails}
-              onChange={(e) => setAgreeToEmails(e.target.checked)}
-              className="h-5 w-5 rounded border-gray-300 text-blue-500 focus:ring-blue-500"
+                  } else {
+                    if (!prevSubscription) {
+                      setIsModalOpen(true); //open subscribe modal
+                    } else {
+                      setIsResubscribeModalOpen(true); //open resubscribe modal
+                    }
+                  }
+                }}
+                  className={`w-full sm:w-auto px-6 py-3 rounded-md font-semibold transition-all duration-200 
+                    ${
+                    agreeToEmails
+                      ? 'bg-red-500 text-white hover:bg-red-600 focus:ring-2 focus:ring-red-400'
+                      : prevSubscription
+                      ? 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-2 focus:ring-blue-400'
+                      : 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-2 focus:ring-blue-400'
+                    }`}
+                  >
+                  {agreeToEmails
+                    ? 'Unsubscribe from Emails'
+                    : prevSubscription
+                    ? 'Re-Subscribe for Emails'
+                    : 'Sign Up for Emails'}
+              </button>
+            </div>
+
+
+
+            {/* Pass state to the modal */}
+            <MailchimpModal
+              isOpen={isModalOpen}
+              setIsOpen={setIsModalOpen}
+              setAgreeToEmails={setAgreeToEmails}
+              setPrevSubscription={setPrevSubscription}
             />
-            <label className="text-sm text-gray-700 dark:text-gray-400">
-              I agree to receive email notifications
-            </label>
+             <MailchimpUnsubscribeModal
+              isOpen={isUnsubscribeModalOpen}
+              setIsOpen={setIsUnsubscribeModalOpen}
+              setAgreeToEmails={setAgreeToEmails}
+            />
+            <MailchimpResubscribeModal
+              isOpen={isResubscribeModalOpen}
+              setIsOpen={setIsResubscribeModalOpen}
+              setAgreeToEmails={setAgreeToEmails}
+            />
+          </div>
           </div>
 
           {/* Submit Button */}
           <div>
-            <button className="w-full bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-blue-600 transition">
+            <button
+              className="w-full bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-blue-600 transition"
+              onClick={() => alert("Changes have been saved successfully!")}
+            >
               Save Changes
             </button>
           </div>
