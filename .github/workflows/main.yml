@@ -16,6 +16,12 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v3
+        
+      - name: Clean install dependencies
+        run: |
+          npm config set registry https://registry.npmjs.org/
+          npm ci
+
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
