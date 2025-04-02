@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllUsers, deleteUser} from "../api/firebase";
 import { Tab } from "@headlessui/react";
+import EmailEditor  from "./EmailEditor";
 
 const Admin: React.FC = () => {
   const [users, setUsers] = useState<any[]>([]);
@@ -79,7 +80,7 @@ const Admin: React.FC = () => {
     <div className="custom-bg custom-dark flex items-center justify-center"
     style= {{minHeight: 'calc(100vh - 30rem)'}}
     >
-      <div className="w-full max-w-6xl bg-white dark:bg-gray-800 shadow-xl rounded-lg p-12">
+      <div className="w-full max-w-6xl bg-white dark:bg-gray-800 shadow-xl rounded-lg p-12 my-20">
         <h2 className="text-4xl font-bold mb-8 text-gray-800 dark:text-gray-100">
           Admin Panel
         </h2>
@@ -185,13 +186,7 @@ const Admin: React.FC = () => {
                   placeholder="Subject"
                   className="w-full border rounded-md px-4 py-3 focus:ring-2 focus:ring-blue-500"
                 />
-                <textarea
-                  value={emailBody}
-                  onChange={(e) => setEmailBody(e.target.value)}
-                  placeholder="Email body..."
-                  rows={6}
-                  className="w-full border rounded-md px-4 py-3 focus:ring-2 focus:ring-blue-500"
-                />
+                <EmailEditor value={emailBody} onChange={setEmailBody} />
                 <button
                   onClick={handleSendMassEmail}
                   disabled={isSending}
@@ -203,13 +198,6 @@ const Admin: React.FC = () => {
                 </button>
 
               </div>
-              <div className="mt-6 p-4 bg-gray-100 dark:bg-gray-700 rounded">
-              <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Preview:</h4>
-              <div
-                className="prose dark:prose-invert max-w-none"
-                dangerouslySetInnerHTML={{ __html: emailBody }}
-              />
-            </div>
 
             </Tab.Panel>
           </Tab.Panels>

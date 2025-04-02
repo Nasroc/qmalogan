@@ -49,7 +49,7 @@ const handler: Handler = async (event) => {
           settings: {
             subject_line: subject,
             title: subject,
-            from_name: 'Mark Allman',
+            from_name: 'Quantum Martial Arts',
             reply_to: 'logankarate@gmail.com',
             auto_footer: true,
             inline_css: true,
