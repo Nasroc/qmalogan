@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
 import { getAllUsers, deleteUser} from "../api/firebase";
 import { Tab } from "@headlessui/react";
