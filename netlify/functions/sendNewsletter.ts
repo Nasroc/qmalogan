@@ -32,9 +32,11 @@ const handler: Handler = async (event) => {
   // ✅ Handle POST request
   if (event.httpMethod === 'POST') {
     try {
+      console.log("📬 Parsing request body...");
       const { subject, html } = JSON.parse(event.body || '{}');
+      console.log("✅ Parsed:", { subject, html });
 
-      // ✅ Create campaign
+      console.log("📤 Creating campaign...");
       const campaignRes = await fetch(`https://${MAILCHIMP_SERVER_PREFIX}.api.mailchimp.com/3.0/campaigns`, {
         method: 'POST',
         headers: {
@@ -56,16 +58,23 @@ const handler: Handler = async (event) => {
       });
 
       const campaign = await campaignRes.json();
+      console.log("📨 Campaign response:", campaign);
 
       if (!campaign.id) {
+        console.error("❌ Campaign creation failed:", campaign);
         return {
           statusCode: 500,
           headers: corsHeaders,
-          body: JSON.stringify({ error: 'Campaign creation failed', details: campaign }),
+          body: JSON.stringify({
+            error: 'Campaign creation failed',
+            mailchimpMessage: campaign.detail || 'No detail provided',
+            fullResponse: campaign,
+          }),
         };
       }
 
       // ✅ Set content
+      console.log("📝 Setting campaign content...");
       await fetch(`https://${MAILCHIMP_SERVER_PREFIX}.api.mailchimp.com/3.0/campaigns/${campaign.id}/content`, {
         method: 'PUT',
         headers: {
@@ -76,6 +85,7 @@ const handler: Handler = async (event) => {
       });
 
       // ✅ Send campaign
+      console.log("🚀 Sending campaign...");
       await fetch(`https://${MAILCHIMP_SERVER_PREFIX}.api.mailchimp.com/3.0/campaigns/${campaign.id}/actions/send`, {
         method: 'POST',
         headers: {
@@ -89,6 +99,7 @@ const handler: Handler = async (event) => {
         body: JSON.stringify({ success: true }),
       };
     } catch (error: any) {
+      console.error("🔥 Unexpected error:", error);
       return {
         statusCode: 500,
         headers: corsHeaders,
