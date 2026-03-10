@@ -28,6 +28,9 @@ body {
   .custom-bg {
     @apply bg-gradient-to-b from-[#ffffff] to-[#74748b];
   }
+  .custom-bg-light {
+    @apply bg-gradient-to-b from-[#74748b] to-[#ffffff];
+  }
   .custom-dark {
     @apply dark:from-[#343438] dark:to-[#1c1c27] dark:text-white;
   }
