@@ -22,7 +22,7 @@ export function FormContent({ beltData, nextBelt, prevBelt, nextFormLink, prevFo
     return (
         <section className="flex flex-col items-center justify-start gap-12 py-20 px-8 custom-bg custom-dark min-h-screen transition-colors duration-300">
             {/* Back to Resources Link */}
-            <div className="w-full text-left">
+            <div className="w-full text-center">
                 <Link 
                     to="/resources/info/forms" 
                     className="text-blue-600 dark:text-blue-400 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors duration-200"
