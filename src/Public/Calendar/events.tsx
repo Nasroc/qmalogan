@@ -11,18 +11,7 @@ interface Event{
     flyers: Flyer[];
 }
 
-const events: Event[] = [
-    {
-        event: "Safety Day",
-        description: [],
-        flyers: [
-            {   
-                title: "Safety Day Flyer",
-                url: "/flyers/open-house.png",
-            },
-        ],
-    }
-];
+const events: Event[] = [];
 
 export function Events() {
     return (
