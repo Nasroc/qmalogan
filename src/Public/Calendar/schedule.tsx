@@ -15,7 +15,10 @@ export function LoganSchedule() {
                         {
                             day: "Monday",
                             events: [
-                                "5:00 PM - Kyuki-do / Kids (Ages 6-12)",
+                                "10:00 AM - Kyuki-do / Tiny Tigers Parent & Me (Ages 18 mos - 3 yrs)",
+                                "10:45 AM - Kyuki-do / Homeschool (Family)",
+                                "12:00 PM - Kyuki-do / Adults (Ages 12+)",
+                                "5:00 PM - Kyuki-do / Youth (Ages 6-12)",
                                 "6:00 PM - Kyuki-do / Adults (Ages 12+)",
                             ],
                         },
@@ -24,7 +27,7 @@ export function LoganSchedule() {
                             events: [
                                 "3:00 PM - Kyuki-do / Homeschool (Ages 5-12)",
                                 "4:00 PM - Kyuki-do / Little Tigers (Ages 3-5)",
-                                "5:00 PM - Kyuki-do / Kids (Ages 6-12)",
+                                "5:00 PM - Kyuki-do / Youth (Ages 6-12)",
                                 "6:00 PM - Kyuki-do / Adults (Ages 12+)",
                                 "7:00 PM - Kyuki-do / Women (Ages 12+)",
                             ],
@@ -32,7 +35,7 @@ export function LoganSchedule() {
                         {
                             day: "Wednesday",
                             events: [
-                                "5:00 PM - Kyuki-do / Kids (Ages 6-12)",
+                                "5:00 PM - Kyuki-do / Youth (Ages 6-12)",
                                 "6:00 PM - Kyuki-do / Adults (Ages 12+)",
                             ],
                         },
@@ -41,14 +44,15 @@ export function LoganSchedule() {
                             events: [
                                 "3:00 PM - Kyuki-do / Homeschool (Ages 5-12)",
                                 "4:00 PM - Kyuki-do / Little Tigers (Ages 3-5)",
-                                "5:00 PM - Kyuki-do / Kids (Ages 6-12)",
+                                "5:00 PM - Kyuki-do / Youth (Ages 6-12)",
                                 "6:00 PM - Kyuki-do / Adults (Ages 12+)",
                             ],
                         },
                         {
                             day: "Saturday",
                             events: [
-                                "8:00 AM - Strength & Conditioning",
+                                "8:00 AM - Performance & Conditioning",
+                                "9:45 AM - Competition Forms / Open Mat Forms"
                             ],
                         },
                     ].map(({ day, events }) => (
